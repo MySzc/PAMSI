@@ -1,0 +1,4 @@
+/home/msz/Desktop/szkoła/Szkoła 2 rok/PAMSI/tester/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/msz/Desktop/szkoła/Szkoła 2 rok/PAMSI/tester/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/msz/Desktop/szkoła/Szkoła 2 rok/PAMSI/tester/cmake-build-debug/CMakeFiles/pamsi_tester.dir
+/home/msz/Desktop/szkoła/Szkoła 2 rok/PAMSI/tester/cmake-build-debug/CMakeFiles/pamsi_tester_example.dir
