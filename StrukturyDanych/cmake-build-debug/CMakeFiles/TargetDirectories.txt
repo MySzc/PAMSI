@@ -1,0 +1,3 @@
+/home/msz/Desktop/PAMSI/StrukturyDanych/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/msz/Desktop/PAMSI/StrukturyDanych/cmake-build-debug/CMakeFiles/StrukturyDanych.dir
+/home/msz/Desktop/PAMSI/StrukturyDanych/cmake-build-debug/CMakeFiles/edit_cache.dir
