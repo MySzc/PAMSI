@@ -1,0 +1,3 @@
+/home/msz/Desktop/PAMSI/Sortowanie/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/msz/Desktop/PAMSI/Sortowanie/cmake-build-debug/CMakeFiles/Sortowanie.dir
+/home/msz/Desktop/PAMSI/Sortowanie/cmake-build-debug/CMakeFiles/edit_cache.dir
