@@ -13,7 +13,7 @@ void initialize_array_w_random_numbers(int array[], unsigned int size, int upper
 
 
 
-    std::cout << std::endl << "Initialization begins.";
+    std::cout << "Initialization begins.";
 
     for(int i = 0; i < size; i++){
 
@@ -21,5 +21,5 @@ void initialize_array_w_random_numbers(int array[], unsigned int size, int upper
 
     };
 
-    std::cout << std::endl << "Initialization complete." << std::endl << std::endl;
+    std::cout << std::endl << "Initialization complete.";
 }

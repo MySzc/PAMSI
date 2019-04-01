@@ -150,6 +150,33 @@ array_init.cpp.s:
 	$(MAKE) -f CMakeFiles/Sortowanie.dir/build.make CMakeFiles/Sortowanie.dir/array_init.cpp.s
 .PHONY : array_init.cpp.s
 
+heap_sort.o: heap_sort.cpp.o
+
+.PHONY : heap_sort.o
+
+# target to build an object file
+heap_sort.cpp.o:
+	$(MAKE) -f CMakeFiles/Sortowanie.dir/build.make CMakeFiles/Sortowanie.dir/heap_sort.cpp.o
+.PHONY : heap_sort.cpp.o
+
+heap_sort.i: heap_sort.cpp.i
+
+.PHONY : heap_sort.i
+
+# target to preprocess a source file
+heap_sort.cpp.i:
+	$(MAKE) -f CMakeFiles/Sortowanie.dir/build.make CMakeFiles/Sortowanie.dir/heap_sort.cpp.i
+.PHONY : heap_sort.cpp.i
+
+heap_sort.s: heap_sort.cpp.s
+
+.PHONY : heap_sort.s
+
+# target to generate assembly for a file
+heap_sort.cpp.s:
+	$(MAKE) -f CMakeFiles/Sortowanie.dir/build.make CMakeFiles/Sortowanie.dir/heap_sort.cpp.s
+.PHONY : heap_sort.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -216,6 +243,9 @@ help:
 	@echo "... array_init.o"
 	@echo "... array_init.i"
 	@echo "... array_init.s"
+	@echo "... heap_sort.o"
+	@echo "... heap_sort.i"
+	@echo "... heap_sort.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

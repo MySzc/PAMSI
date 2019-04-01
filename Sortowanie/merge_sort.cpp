@@ -6,7 +6,7 @@
 
 void mergesort_merge(int array[], int start_index, int middle_index, int end_index) {
 
-    int array_size = (end_index - start_index) + 1;
+    int array_size = end_index - start_index + 1;
 
     int* tempArray = new int[array_size];
 
@@ -17,17 +17,17 @@ void mergesort_merge(int array[], int start_index, int middle_index, int end_ind
 
     while(left_index <= middle_index && right_index <= end_index){
 
-        if(array[left_index] >= array[right_index]){
-
-            tempArray[final_array_index] = array[right_index];
-
-            right_index++;
-
-        }else{
+        if(array[left_index] <= array[right_index]){
 
             tempArray[final_array_index] = array[left_index];
 
             left_index++;
+
+        }else{
+
+            tempArray[final_array_index] = array[right_index];
+
+            right_index++;
 
         };
 
@@ -67,7 +67,7 @@ void mergesort_sort(int array[], int start_index, int end_index) {
 
     if(start_index < end_index){
 
-        int middle_index = (end_index - start_index)/2;
+        int middle_index = (end_index + start_index)/2;
 
         mergesort_sort(array,start_index,middle_index);
         mergesort_sort(array,middle_index+1,end_index);

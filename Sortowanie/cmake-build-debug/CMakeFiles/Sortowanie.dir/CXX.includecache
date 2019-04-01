@@ -8,6 +8,8 @@
 
 /home/msz/Desktop/PAMSI/Sortowanie/array_init.h
 
+/home/msz/Desktop/PAMSI/Sortowanie/heap_sort.h
+
 /home/msz/Desktop/PAMSI/Sortowanie/main.cpp
 iostream
 -
@@ -17,6 +19,8 @@ array_init.h
 /home/msz/Desktop/PAMSI/Sortowanie/array_init.h
 merge_sort.h
 /home/msz/Desktop/PAMSI/Sortowanie/merge_sort.h
+heap_sort.h
+/home/msz/Desktop/PAMSI/Sortowanie/heap_sort.h
 
 /home/msz/Desktop/PAMSI/Sortowanie/merge_sort.h
 

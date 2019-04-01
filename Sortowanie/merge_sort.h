@@ -8,7 +8,6 @@
 void mergesort_merge(int array[], int start_index, int middle_index, int end_index);
 
 
-
 void mergesort_sort(int array[], int start_index, int end_index);
 
 
