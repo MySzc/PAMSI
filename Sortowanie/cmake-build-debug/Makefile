@@ -177,6 +177,33 @@ heap_sort.cpp.s:
 	$(MAKE) -f CMakeFiles/Sortowanie.dir/build.make CMakeFiles/Sortowanie.dir/heap_sort.cpp.s
 .PHONY : heap_sort.cpp.s
 
+insert_sort.o: insert_sort.cpp.o
+
+.PHONY : insert_sort.o
+
+# target to build an object file
+insert_sort.cpp.o:
+	$(MAKE) -f CMakeFiles/Sortowanie.dir/build.make CMakeFiles/Sortowanie.dir/insert_sort.cpp.o
+.PHONY : insert_sort.cpp.o
+
+insert_sort.i: insert_sort.cpp.i
+
+.PHONY : insert_sort.i
+
+# target to preprocess a source file
+insert_sort.cpp.i:
+	$(MAKE) -f CMakeFiles/Sortowanie.dir/build.make CMakeFiles/Sortowanie.dir/insert_sort.cpp.i
+.PHONY : insert_sort.cpp.i
+
+insert_sort.s: insert_sort.cpp.s
+
+.PHONY : insert_sort.s
+
+# target to generate assembly for a file
+insert_sort.cpp.s:
+	$(MAKE) -f CMakeFiles/Sortowanie.dir/build.make CMakeFiles/Sortowanie.dir/insert_sort.cpp.s
+.PHONY : insert_sort.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -246,6 +273,9 @@ help:
 	@echo "... heap_sort.o"
 	@echo "... heap_sort.i"
 	@echo "... heap_sort.s"
+	@echo "... insert_sort.o"
+	@echo "... insert_sort.i"
+	@echo "... insert_sort.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

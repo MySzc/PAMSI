@@ -7,9 +7,13 @@ CMakeFiles/Sortowanie.dir/array_init.cpp.o
 CMakeFiles/Sortowanie.dir/heap_sort.cpp.o
  /home/msz/Desktop/PAMSI/Sortowanie/heap_sort.cpp
  /home/msz/Desktop/PAMSI/Sortowanie/heap_sort.h
+CMakeFiles/Sortowanie.dir/insert_sort.cpp.o
+ /home/msz/Desktop/PAMSI/Sortowanie/insert_sort.cpp
+ /home/msz/Desktop/PAMSI/Sortowanie/insert_sort.h
 CMakeFiles/Sortowanie.dir/main.cpp.o
  /home/msz/Desktop/PAMSI/Sortowanie/array_init.h
  /home/msz/Desktop/PAMSI/Sortowanie/heap_sort.h
+ /home/msz/Desktop/PAMSI/Sortowanie/insert_sort.h
  /home/msz/Desktop/PAMSI/Sortowanie/main.cpp
  /home/msz/Desktop/PAMSI/Sortowanie/merge_sort.h
 CMakeFiles/Sortowanie.dir/merge_sort.cpp.o

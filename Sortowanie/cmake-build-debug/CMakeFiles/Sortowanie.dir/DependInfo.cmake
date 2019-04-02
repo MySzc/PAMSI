@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/msz/Desktop/PAMSI/Sortowanie/array_init.cpp" "/home/msz/Desktop/PAMSI/Sortowanie/cmake-build-debug/CMakeFiles/Sortowanie.dir/array_init.cpp.o"
   "/home/msz/Desktop/PAMSI/Sortowanie/heap_sort.cpp" "/home/msz/Desktop/PAMSI/Sortowanie/cmake-build-debug/CMakeFiles/Sortowanie.dir/heap_sort.cpp.o"
+  "/home/msz/Desktop/PAMSI/Sortowanie/insert_sort.cpp" "/home/msz/Desktop/PAMSI/Sortowanie/cmake-build-debug/CMakeFiles/Sortowanie.dir/insert_sort.cpp.o"
   "/home/msz/Desktop/PAMSI/Sortowanie/main.cpp" "/home/msz/Desktop/PAMSI/Sortowanie/cmake-build-debug/CMakeFiles/Sortowanie.dir/main.cpp.o"
   "/home/msz/Desktop/PAMSI/Sortowanie/merge_sort.cpp" "/home/msz/Desktop/PAMSI/Sortowanie/cmake-build-debug/CMakeFiles/Sortowanie.dir/merge_sort.cpp.o"
   )

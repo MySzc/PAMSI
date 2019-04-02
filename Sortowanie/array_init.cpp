@@ -21,5 +21,5 @@ void initialize_array_w_random_numbers(int array[], unsigned int size, int upper
 
     };
 
-    std::cout << std::endl << "Initialization complete.";
+    std::cout << std::endl << "Initialization complete." << std::endl;
 }

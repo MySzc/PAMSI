@@ -7,8 +7,12 @@ CMakeFiles/Sortowanie.dir/array_init.cpp.o: ../array_init.h
 CMakeFiles/Sortowanie.dir/heap_sort.cpp.o: ../heap_sort.cpp
 CMakeFiles/Sortowanie.dir/heap_sort.cpp.o: ../heap_sort.h
 
+CMakeFiles/Sortowanie.dir/insert_sort.cpp.o: ../insert_sort.cpp
+CMakeFiles/Sortowanie.dir/insert_sort.cpp.o: ../insert_sort.h
+
 CMakeFiles/Sortowanie.dir/main.cpp.o: ../array_init.h
 CMakeFiles/Sortowanie.dir/main.cpp.o: ../heap_sort.h
+CMakeFiles/Sortowanie.dir/main.cpp.o: ../insert_sort.h
 CMakeFiles/Sortowanie.dir/main.cpp.o: ../main.cpp
 CMakeFiles/Sortowanie.dir/main.cpp.o: ../merge_sort.h
 

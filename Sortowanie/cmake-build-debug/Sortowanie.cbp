@@ -96,6 +96,12 @@
 		<Unit filename="/home/msz/Desktop/PAMSI/Sortowanie/heap_sort.h">
 			<Option target="Sortowanie"/>
 		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Sortowanie/insert_sort.cpp">
+			<Option target="Sortowanie"/>
+		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Sortowanie/insert_sort.h">
+			<Option target="Sortowanie"/>
+		</Unit>
 		<Unit filename="/home/msz/Desktop/PAMSI/Sortowanie/main.cpp">
 			<Option target="Sortowanie"/>
 		</Unit>
