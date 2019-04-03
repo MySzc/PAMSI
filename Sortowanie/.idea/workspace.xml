@@ -11,12 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e5c8583-e6b3-41a5-989a-f05554169bc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Sortowanie.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Sortowanie.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Sortowanie" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Sortowanie" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="8e5c8583-e6b3-41a5-989a-f05554169bc3" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,12 +149,12 @@
       <updated>1554030054371</updated>
       <workItem from="1554030056166" duration="16114000" />
       <workItem from="1554204872527" duration="7362000" />
-      <workItem from="1554240305396" duration="1075000" />
+      <workItem from="1554240305396" duration="1719000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24551000" />
+    <option name="totallyTimeSpent" value="25195000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -178,14 +173,14 @@
       <window_info id="Favorites" order="2" sideWeight="0.5008347" side_tool="true" weight="0.2524013" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29694322" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29694322" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995633" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32969433" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.3286026" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286026" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3286026" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32969433" />
       <window_info anchor="bottom" id="CMake" order="12" />
