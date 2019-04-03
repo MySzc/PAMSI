@@ -6,25 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/msz/Desktop/PAMSI/Sortowanie/array_init.h
-
-/home/msz/Desktop/PAMSI/Sortowanie/heap_sort.h
-
-/home/msz/Desktop/PAMSI/Sortowanie/insert_sort.h
-
-/home/msz/Desktop/PAMSI/Sortowanie/main.cpp
-iostream
--
-chrono
--
-array_init.h
-/home/msz/Desktop/PAMSI/Sortowanie/array_init.h
-merge_sort.h
-/home/msz/Desktop/PAMSI/Sortowanie/merge_sort.h
+/home/msz/Desktop/PAMSI/Sortowanie/heap_sort.cpp
 heap_sort.h
 /home/msz/Desktop/PAMSI/Sortowanie/heap_sort.h
-insert_sort.h
-/home/msz/Desktop/PAMSI/Sortowanie/insert_sort.h
 
-/home/msz/Desktop/PAMSI/Sortowanie/merge_sort.h
+/home/msz/Desktop/PAMSI/Sortowanie/heap_sort.h
 
