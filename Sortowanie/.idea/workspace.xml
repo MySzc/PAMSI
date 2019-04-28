@@ -11,14 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e5c8583-e6b3-41a5-989a-f05554169bc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Sortowanie.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Sortowanie.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Sortowanie.dir/heap_sort.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Sortowanie.dir/heap_sort.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Sortowanie.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Sortowanie.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Sortowanie" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Sortowanie" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="8e5c8583-e6b3-41a5-989a-f05554169bc3" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1999">
-              <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+            <state relative-caret-position="135">
+              <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -76,6 +69,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -87,7 +81,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -128,11 +121,12 @@
       <workItem from="1554204872527" duration="7362000" />
       <workItem from="1554240305396" duration="1719000" />
       <workItem from="1554290981877" duration="1612000" />
+      <workItem from="1556454724405" duration="81000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26807000" />
+    <option name="totallyTimeSpent" value="26888000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -145,8 +139,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916527" visible="true" weight="0.25773746" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916527" visible="true" weight="0.26040554" />
       <window_info id="Structure" order="1" sideWeight="0.5008347" side_tool="true" weight="0.2524013" />
       <window_info id="Favorites" order="2" sideWeight="0.5008347" side_tool="true" weight="0.2524013" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -247,8 +242,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1999">
-          <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+        <state relative-caret-position="135">
+          <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
