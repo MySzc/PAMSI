@@ -123,6 +123,60 @@ Grafy/fast:
 	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/build
 .PHONY : Grafy/fast
 
+Dijkstra.o: Dijkstra.cpp.o
+
+.PHONY : Dijkstra.o
+
+# target to build an object file
+Dijkstra.cpp.o:
+	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/Dijkstra.cpp.o
+.PHONY : Dijkstra.cpp.o
+
+Dijkstra.i: Dijkstra.cpp.i
+
+.PHONY : Dijkstra.i
+
+# target to preprocess a source file
+Dijkstra.cpp.i:
+	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/Dijkstra.cpp.i
+.PHONY : Dijkstra.cpp.i
+
+Dijkstra.s: Dijkstra.cpp.s
+
+.PHONY : Dijkstra.s
+
+# target to generate assembly for a file
+Dijkstra.cpp.s:
+	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/Dijkstra.cpp.s
+.PHONY : Dijkstra.cpp.s
+
+ListaSasiedztwa.o: ListaSasiedztwa.cpp.o
+
+.PHONY : ListaSasiedztwa.o
+
+# target to build an object file
+ListaSasiedztwa.cpp.o:
+	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/ListaSasiedztwa.cpp.o
+.PHONY : ListaSasiedztwa.cpp.o
+
+ListaSasiedztwa.i: ListaSasiedztwa.cpp.i
+
+.PHONY : ListaSasiedztwa.i
+
+# target to preprocess a source file
+ListaSasiedztwa.cpp.i:
+	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/ListaSasiedztwa.cpp.i
+.PHONY : ListaSasiedztwa.cpp.i
+
+ListaSasiedztwa.s: ListaSasiedztwa.cpp.s
+
+.PHONY : ListaSasiedztwa.s
+
+# target to generate assembly for a file
+ListaSasiedztwa.cpp.s:
+	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/ListaSasiedztwa.cpp.s
+.PHONY : ListaSasiedztwa.cpp.s
+
 MacierzSasiedztwa.o: MacierzSasiedztwa.cpp.o
 
 .PHONY : MacierzSasiedztwa.o
@@ -186,6 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Grafy"
 	@echo "... edit_cache"
+	@echo "... Dijkstra.o"
+	@echo "... Dijkstra.i"
+	@echo "... Dijkstra.s"
+	@echo "... ListaSasiedztwa.o"
+	@echo "... ListaSasiedztwa.i"
+	@echo "... ListaSasiedztwa.s"
 	@echo "... MacierzSasiedztwa.o"
 	@echo "... MacierzSasiedztwa.i"
 	@echo "... MacierzSasiedztwa.s"

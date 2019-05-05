@@ -5,18 +5,21 @@
 #ifndef GRAFY_MACIERZSASIEDZTWA_H
 #define GRAFY_MACIERZSASIEDZTWA_H
 
+#include <string>
+
 class MacierzSasiedztwa{
 public:
-    int lKrawiedzi;
+    int lKrawedzi;
+    int lNodow;
     int **Macierz;
 
     MacierzSasiedztwa(){};
-    MacierzSasiedztwa(int liczbaKrawedzi);
+   // MacierzSasiedztwa(int liczbaKrawedzi);
 
 
 
     void WyswietlMacierz();
-    void InicjalizacjaWielkosciMacierzy(int liczbaKrawedzi);
+    void InicjalizacjaWielkosciMacierzy(int liczbaKrawedzi, int liczbaNodow);
     void ZainicjujMacierz(int rzad, int kolumna, int waga);
     void OdczytajGraf(std::string nazwaPliku);
 };

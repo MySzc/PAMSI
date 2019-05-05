@@ -84,6 +84,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/msz/Desktop/PAMSI/Grafy/Dijkstra.cpp">
+			<Option target="Grafy"/>
+		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Grafy/Dijkstra.h">
+			<Option target="Grafy"/>
+		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Grafy/ListaSasiedztwa.cpp">
+			<Option target="Grafy"/>
+		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Grafy/ListaSasiedztwa.h">
+			<Option target="Grafy"/>
+		</Unit>
 		<Unit filename="/home/msz/Desktop/PAMSI/Grafy/MacierzSasiedztwa.cpp">
 			<Option target="Grafy"/>
 		</Unit>
