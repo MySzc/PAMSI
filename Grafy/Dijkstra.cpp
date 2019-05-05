@@ -55,7 +55,7 @@ int Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
     }
 
     std::cout << "Node koncowy:" << "           " << "Dystans od node zrodlowego:" << std::endl;
-    for (int l = 0; l < M.lKrawedzi; ++l) {
+    for (int l = 0; l < M.lNodow; ++l) {
         std::cout << l+1 <<  "          -----        " << dystans[l] << std::endl;
     }
 
@@ -80,20 +80,37 @@ int Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
 
     dystans[Node_Start-1] = 0;
 
-    while(!pq.empty()){
+    int i;
+    int v;
+    int waga;
+    int u;
 
-        int u = pq.top().second;
+    while(!pq.empty()) {
+
+        u = pq.top().second;
         pq.pop();
 
-        for () {
+        i = 0;
+
+        while (L.Lista[u][i].first != 0) {
 
 
-            
-        }
+            v = L.Lista[u][i].first;
+            waga = L.Lista[u][i].second;
 
+            i++;
 
+            if (dystans[v] > dystans[u] + waga) {
 
+                dystans[v] = dystans[u] + waga;
+                pq.push(std::make_pair(dystans[v], v));
+            };
+        };
+    };
 
+    std::cout << "Node koncowy:" << "           " << "Dystans od node zrodlowego:" << std::endl;
+    for (int l = 0; l < L.lNodow; ++l) {
+        std::cout << l+1 <<  "          -----        " << dystans[l] << std::endl;
     }
 
     return 0;

@@ -24,5 +24,11 @@ int main() {
 
     Dijkstra_M(wrkMacierz, 1);
 
+    std::cout << std::endl << "*********************************************" << std::endl << std::endl;
+
+    wrkLista.WyswietlListe();
+
+    Dijkstra_L(wrkLista, 1);
+
     return 0;
 }
