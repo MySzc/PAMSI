@@ -3,6 +3,7 @@
 
 CMakeFiles/Grafy.dir/Dijkstra.cpp.o: ../Dijkstra.cpp
 CMakeFiles/Grafy.dir/Dijkstra.cpp.o: ../Dijkstra.h
+CMakeFiles/Grafy.dir/Dijkstra.cpp.o: ../ListaSasiedztwa.h
 CMakeFiles/Grafy.dir/Dijkstra.cpp.o: ../MacierzSasiedztwa.h
 
 CMakeFiles/Grafy.dir/ListaSasiedztwa.cpp.o: ../ListaSasiedztwa.cpp

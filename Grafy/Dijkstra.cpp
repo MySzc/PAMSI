@@ -5,6 +5,9 @@
 #include "Dijkstra.h"
 #include <climits>
 #include <iostream>
+#include <queue>
+#include <utility>
+#include <vector>
 
 int ZwrocMinIndeks_M (int dystans[], bool najkrotsza_droga[], MacierzSasiedztwa M){
 
@@ -46,7 +49,7 @@ int Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
         najkrotsza_droga[u] = true;
 
         for (int k = 0; k < M.lKrawedzi; ++k)
-            if(!najkrotsza_droga[k] && M.Macierz[u][k] && dystans[k] != INT_MAX && dystans[u]+M.Macierz[u][k] < dystans[k])
+            if(!najkrotsza_droga[k] && M.Macierz[u][k] && dystans[u] != INT_MAX && dystans[u]+M.Macierz[u][k] < dystans[k])
                 dystans[k] = dystans[u]+M.Macierz[u][k];
 
     }
@@ -56,6 +59,42 @@ int Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
         std::cout << l+1 <<  "          -----        " << dystans[l] << std::endl;
     }
 
+
+    return 0;
+}
+
+typedef std::pair<int,int> int_pair;
+
+int Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
+
+    //TODO Jak zainicjowac drugi argument tablica/wskaznikiem a nie vectorem
+    std::priority_queue< int_pair, std::vector<int_pair>, std::greater<int_pair> > pq;
+
+    int *dystans = new int [L.lKrawedzi];
+
+    for (int i = 0; i < L.lKrawedzi; ++i) {
+        dystans[i] = INT_MAX;
+    };
+
+    pq.push(std::make_pair(0,Node_Start-1));
+
+    dystans[Node_Start-1] = 0;
+
+    while(!pq.empty()){
+
+        int u = pq.top().second;
+        pq.pop();
+
+        for () {
+
+
+            
+        }
+
+
+
+
+    }
 
     return 0;
 }

@@ -6,9 +6,25 @@
 
 #IncludeRegexTransform: 
 
+/home/msz/Desktop/PAMSI/Grafy/Dijkstra.cpp
+Dijkstra.h
+/home/msz/Desktop/PAMSI/Grafy/Dijkstra.h
+climits
+-
+iostream
+-
+queue
+-
+utility
+-
+vector
+-
+
 /home/msz/Desktop/PAMSI/Grafy/Dijkstra.h
 MacierzSasiedztwa.h
 /home/msz/Desktop/PAMSI/Grafy/MacierzSasiedztwa.h
+ListaSasiedztwa.h
+/home/msz/Desktop/PAMSI/Grafy/ListaSasiedztwa.h
 
 /home/msz/Desktop/PAMSI/Grafy/ListaSasiedztwa.h
 utility
@@ -17,16 +33,4 @@ utility
 /home/msz/Desktop/PAMSI/Grafy/MacierzSasiedztwa.h
 string
 -
-
-/home/msz/Desktop/PAMSI/Grafy/main.cpp
-iostream
--
-fstream
--
-MacierzSasiedztwa.h
-/home/msz/Desktop/PAMSI/Grafy/MacierzSasiedztwa.h
-ListaSasiedztwa.h
-/home/msz/Desktop/PAMSI/Grafy/ListaSasiedztwa.h
-Dijkstra.h
-/home/msz/Desktop/PAMSI/Grafy/Dijkstra.h
 
