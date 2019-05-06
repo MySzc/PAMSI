@@ -22,13 +22,13 @@ int main() {
     wrkMacierz.WyswietlMacierz();
 
 
-    Dijkstra_M(wrkMacierz, 1);
+    Dijkstra_M(wrkMacierz, 0);
 
     std::cout << std::endl << "*********************************************" << std::endl << std::endl;
 
     wrkLista.WyswietlListe();
 
-    Dijkstra_L(wrkLista, 1);
+    Dijkstra_L(wrkLista, 0);
 
     return 0;
 }

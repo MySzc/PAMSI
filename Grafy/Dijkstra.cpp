@@ -27,18 +27,16 @@ int ZwrocMinIndeks_M (int dystans[], bool najkrotsza_droga[], MacierzSasiedztwa 
 
 int Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
 
-    //int dystans[M.lKrawedzi];
-    int *dystans = new int [M.lKrawedzi];
-    //bool najkrotsza_droga[M.lKrawedzi];
-    bool *najkrotsza_droga = new bool [M.lKrawedzi];
+    int *dystans = new int [M.lNodow];
+    bool *najkrotsza_droga = new bool [M.lNodow];
 
 
-    for (int i = 0; i < M.lKrawedzi; ++i) {
+    for (int i = 0; i < M.lNodow; ++i) {
         dystans[i] = INT_MAX;
         najkrotsza_droga[i] = false;
     };
 
-    dystans[Node_Start-1] = 0;
+    dystans[Node_Start] = 0;
 
     for (int j = 0; j < M.lKrawedzi-1 ; ++j) {
 
@@ -50,13 +48,13 @@ int Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
 
         for (int k = 0; k < M.lKrawedzi; ++k)
             if(!najkrotsza_droga[k] && M.Macierz[u][k] && dystans[u] != INT_MAX && dystans[u]+M.Macierz[u][k] < dystans[k])
-                dystans[k] = dystans[u]+M.Macierz[u][k];
+                dystans[k] = dystans[u] + M.Macierz[u][k];
 
     }
 
     std::cout << "Node koncowy:" << "           " << "Dystans od node zrodlowego:" << std::endl;
     for (int l = 0; l < M.lNodow; ++l) {
-        std::cout << l+1 <<  "          -----        " << dystans[l] << std::endl;
+        std::cout << l <<  "          -----        " << dystans[l] << std::endl;
     }
 
 
@@ -70,15 +68,15 @@ int Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
     //TODO Jak zainicjowac drugi argument tablica/wskaznikiem a nie vectorem
     std::priority_queue< int_pair, std::vector<int_pair>, std::greater<int_pair> > pq;
 
-    int *dystans = new int [L.lKrawedzi];
+    int *dystans = new int [L.lNodow];
 
-    for (int i = 0; i < L.lKrawedzi; ++i) {
+    for (int i = 0; i < L.lNodow; ++i) {
         dystans[i] = INT_MAX;
     };
 
-    pq.push(std::make_pair(0,Node_Start-1));
+    pq.push(std::make_pair(0,Node_Start));
 
-    dystans[Node_Start-1] = 0;
+    dystans[Node_Start] = 0;
 
     int i;
     int v;
@@ -92,7 +90,7 @@ int Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
 
         i = 0;
 
-        while (L.Lista[u][i].first != 0) {
+        while (L.Lista[u][i].second != 0) {
 
 
             v = L.Lista[u][i].first;
@@ -110,7 +108,7 @@ int Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
 
     std::cout << "Node koncowy:" << "           " << "Dystans od node zrodlowego:" << std::endl;
     for (int l = 0; l < L.lNodow; ++l) {
-        std::cout << l+1 <<  "          -----        " << dystans[l] << std::endl;
+        std::cout << l <<  "          -----        " << dystans[l] << std::endl;
     }
 
     return 0;

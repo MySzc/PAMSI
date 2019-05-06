@@ -21,15 +21,15 @@ void MacierzSasiedztwa::WyswietlMacierz() {
 
     // DLA ESTETYKI
     std::cout << "    ";
-    for (int i = 0; i < lKrawedzi; ++i) {
-        std::cout << "[" << i+1 << "]  ";
+    for (int i = 0; i < lNodow; ++i) {
+        std::cout << "[" << i << "]  ";
     }
     std::cout << std::endl;
 
 
-    for (int rzad = 0; rzad < lKrawedzi; ++rzad) {
-        std::cout << "[" << rzad+1 << "] ";
-        for (int kolumna = 0; kolumna < lKrawedzi; ++kolumna) {
+    for (int rzad = 0; rzad < lNodow; ++rzad) {
+        std::cout << "[" << rzad << "] ";
+        for (int kolumna = 0; kolumna < lNodow; ++kolumna) {
             std::cout << " " << Macierz[rzad][kolumna] << "   ";
         }
         std::cout << std::endl << std::endl;
@@ -39,7 +39,7 @@ void MacierzSasiedztwa::WyswietlMacierz() {
 
 void MacierzSasiedztwa::ZainicjujMacierz(int rzad, int kolumna, int waga) {
 
-    Macierz[rzad-1][kolumna-1] = waga;
+    Macierz[rzad][kolumna] = waga;
 }
 
 void MacierzSasiedztwa::InicjalizacjaWielkosciMacierzy(int liczbaKrawedzi, int liczbaNodow) {

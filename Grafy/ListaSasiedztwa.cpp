@@ -10,10 +10,10 @@
 void ListaSasiedztwa::WyswietlListe() {
 
     for (int rzad = 0; rzad < lNodow; ++rzad) {
-        std::cout << "[" << rzad+1 << "] ";
+        std::cout << "[" << rzad << "] ";
         for (int kolumna = 0; kolumna < lNodow; ++kolumna) {
 
-            if(Lista[rzad][kolumna].first != 0)
+            if(Lista[rzad][kolumna].second != 0)
             std::cout << Lista[rzad][kolumna].first << " , " << Lista[rzad][kolumna].second << " ; ";
 
         }
@@ -39,12 +39,12 @@ void ListaSasiedztwa::ZainicjujListe(int node_1, int node_2, int waga) {
 
     int i = 0;
 
-    while(Lista[node_1 - 1][i].first != 0){
+    while(Lista[node_1][i].second != 0){
         i++;
     }
 
-    Lista[node_1 - 1][i].first = node_2;
-    Lista[node_1 - 1][i].second = waga;
+    Lista[node_1][i].first = node_2;
+    Lista[node_1][i].second = waga;
 
 }
 
