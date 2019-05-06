@@ -9,13 +9,13 @@ int main() {
 
     MacierzSasiedztwa wrkMacierz;
 
-    wrkMacierz.OdczytajGraf("test3.txt");
+    wrkMacierz.OdczytajGraf("test2.txt");
 
     std::cout << "*********************************************" << std::endl << std::endl;
 
     ListaSasiedztwa wrkLista;
 
-    wrkLista.OdczytajGraf("test3.txt");
+    wrkLista.OdczytajGraf("test2.txt");
 
     std::cout << std::endl << "*********************************************" << std::endl << std::endl;
 

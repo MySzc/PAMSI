@@ -26,7 +26,7 @@ int ZwrocMinIndeks_M (int dystans[], bool najkrotsza_droga[], MacierzSasiedztwa 
     return min_indeks;
 }
 
-int Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
+void Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
 
     int *dystans = new int [M.lNodow];
     bool *najkrotsza_droga = new bool [M.lNodow];
@@ -67,13 +67,11 @@ int Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
 
     std::cout << std::endl << "Szukanie najkrotszej drogi zakonczono w " << std::chrono::duration <double, std::milli> (diff).count() << " ms" << std::endl << std::endl << std::endl;
 
-
-    return 0;
 }
 
 typedef std::pair<int,int> int_pair;
 
-int Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
+void Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
 
     //TODO Jak zainicjowac drugi argument tablica/wskaznikiem a nie vectorem
     std::priority_queue< int_pair, std::vector<int_pair>, std::greater<int_pair> > pq;
@@ -133,5 +131,4 @@ int Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
 
     std::cout << std::endl << "Szukanie najkrotszej drogi zakonczono w " << std::chrono::duration <double, std::milli> (diff).count() << " ms" << std::endl << std::endl << std::endl;
 
-    return 0;
 }

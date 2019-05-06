@@ -3,6 +3,7 @@
 
 CMakeFiles/Grafy.dir/BellmanFord.cpp.o: ../BellmanFord.cpp
 CMakeFiles/Grafy.dir/BellmanFord.cpp.o: ../BellmanFord.h
+CMakeFiles/Grafy.dir/BellmanFord.cpp.o: ../MacierzSasiedztwa.h
 
 CMakeFiles/Grafy.dir/Dijkstra.cpp.o: ../Dijkstra.cpp
 CMakeFiles/Grafy.dir/Dijkstra.cpp.o: ../Dijkstra.h

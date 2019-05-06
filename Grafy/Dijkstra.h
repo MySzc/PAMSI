@@ -10,9 +10,9 @@
 
 int ZwrocMinIndeks_M (int wagi[], bool najkrotsza_droga[], MacierzSasiedztwa M);
 
-int Dijkstra_M(MacierzSasiedztwa M, int Node_Start);
+void Dijkstra_M(MacierzSasiedztwa M, int Node_Start);
 
-int Dijkstra_L(ListaSasiedztwa L, int Node_Start);
+void Dijkstra_L(ListaSasiedztwa L, int Node_Start);
 
 
 
