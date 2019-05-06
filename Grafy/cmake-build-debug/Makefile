@@ -123,6 +123,33 @@ Grafy/fast:
 	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/build
 .PHONY : Grafy/fast
 
+BellmanFord.o: BellmanFord.cpp.o
+
+.PHONY : BellmanFord.o
+
+# target to build an object file
+BellmanFord.cpp.o:
+	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/BellmanFord.cpp.o
+.PHONY : BellmanFord.cpp.o
+
+BellmanFord.i: BellmanFord.cpp.i
+
+.PHONY : BellmanFord.i
+
+# target to preprocess a source file
+BellmanFord.cpp.i:
+	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/BellmanFord.cpp.i
+.PHONY : BellmanFord.cpp.i
+
+BellmanFord.s: BellmanFord.cpp.s
+
+.PHONY : BellmanFord.s
+
+# target to generate assembly for a file
+BellmanFord.cpp.s:
+	$(MAKE) -f CMakeFiles/Grafy.dir/build.make CMakeFiles/Grafy.dir/BellmanFord.cpp.s
+.PHONY : BellmanFord.cpp.s
+
 Dijkstra.o: Dijkstra.cpp.o
 
 .PHONY : Dijkstra.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Grafy"
 	@echo "... edit_cache"
+	@echo "... BellmanFord.o"
+	@echo "... BellmanFord.i"
+	@echo "... BellmanFord.s"
 	@echo "... Dijkstra.o"
 	@echo "... Dijkstra.i"
 	@echo "... Dijkstra.s"

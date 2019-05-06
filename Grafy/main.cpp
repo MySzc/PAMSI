@@ -19,14 +19,9 @@ int main() {
 
     std::cout << std::endl << "*********************************************" << std::endl << std::endl;
 
-    wrkMacierz.WyswietlMacierz();
-
-
     Dijkstra_M(wrkMacierz, 0);
 
     std::cout << std::endl << "*********************************************" << std::endl << std::endl;
-
-    wrkLista.WyswietlListe();
 
     Dijkstra_L(wrkLista, 0);
 

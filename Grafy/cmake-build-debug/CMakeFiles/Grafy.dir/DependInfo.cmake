@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/msz/Desktop/PAMSI/Grafy/BellmanFord.cpp" "/home/msz/Desktop/PAMSI/Grafy/cmake-build-debug/CMakeFiles/Grafy.dir/BellmanFord.cpp.o"
   "/home/msz/Desktop/PAMSI/Grafy/Dijkstra.cpp" "/home/msz/Desktop/PAMSI/Grafy/cmake-build-debug/CMakeFiles/Grafy.dir/Dijkstra.cpp.o"
   "/home/msz/Desktop/PAMSI/Grafy/ListaSasiedztwa.cpp" "/home/msz/Desktop/PAMSI/Grafy/cmake-build-debug/CMakeFiles/Grafy.dir/ListaSasiedztwa.cpp.o"
   "/home/msz/Desktop/PAMSI/Grafy/MacierzSasiedztwa.cpp" "/home/msz/Desktop/PAMSI/Grafy/cmake-build-debug/CMakeFiles/Grafy.dir/MacierzSasiedztwa.cpp.o"

@@ -8,6 +8,7 @@
 #include <queue>
 #include <utility>
 #include <vector>
+#include <chrono>
 
 int ZwrocMinIndeks_M (int dystans[], bool najkrotsza_droga[], MacierzSasiedztwa M){
 
@@ -30,6 +31,9 @@ int Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
     int *dystans = new int [M.lNodow];
     bool *najkrotsza_droga = new bool [M.lNodow];
 
+    std::cout << "MACIERZ:" << std::endl;
+
+    auto start = std::chrono::steady_clock::now();
 
     for (int i = 0; i < M.lNodow; ++i) {
         dystans[i] = INT_MAX;
@@ -52,10 +56,16 @@ int Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
 
     }
 
+    auto end = std::chrono::steady_clock::now();
+
+    auto diff = end - start;
+
     std::cout << "Node koncowy:" << "           " << "Dystans od node zrodlowego:" << std::endl;
     for (int l = 0; l < M.lNodow; ++l) {
         std::cout << l <<  "          -----        " << dystans[l] << std::endl;
     }
+
+    std::cout << std::endl << "Szukanie najkrotszej drogi zakonczono w " << std::chrono::duration <double, std::milli> (diff).count() << " ms" << std::endl << std::endl << std::endl;
 
 
     return 0;
@@ -69,6 +79,10 @@ int Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
     std::priority_queue< int_pair, std::vector<int_pair>, std::greater<int_pair> > pq;
 
     int *dystans = new int [L.lNodow];
+
+    std::cout << "LISTA:" << std::endl;
+
+    auto start = std::chrono::steady_clock::now();
 
     for (int i = 0; i < L.lNodow; ++i) {
         dystans[i] = INT_MAX;
@@ -106,10 +120,18 @@ int Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
         };
     };
 
+    auto end = std::chrono::steady_clock::now();
+
+    auto diff = end - start;
+
+
+
     std::cout << "Node koncowy:" << "           " << "Dystans od node zrodlowego:" << std::endl;
     for (int l = 0; l < L.lNodow; ++l) {
         std::cout << l <<  "          -----        " << dystans[l] << std::endl;
     }
+
+    std::cout << std::endl << "Szukanie najkrotszej drogi zakonczono w " << std::chrono::duration <double, std::milli> (diff).count() << " ms" << std::endl << std::endl << std::endl;
 
     return 0;
 }

@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Grafy.dir/MacierzSasiedztwa.cpp.o"
   "CMakeFiles/Grafy.dir/ListaSasiedztwa.cpp.o"
   "CMakeFiles/Grafy.dir/Dijkstra.cpp.o"
+  "CMakeFiles/Grafy.dir/BellmanFord.cpp.o"
   "Grafy.pdb"
   "Grafy"
 )

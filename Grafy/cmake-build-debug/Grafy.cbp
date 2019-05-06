@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/msz/Desktop/PAMSI/Grafy/BellmanFord.cpp">
+			<Option target="Grafy"/>
+		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Grafy/BellmanFord.h">
+			<Option target="Grafy"/>
+		</Unit>
 		<Unit filename="/home/msz/Desktop/PAMSI/Grafy/Dijkstra.cpp">
 			<Option target="Grafy"/>
 		</Unit>
