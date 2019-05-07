@@ -14,7 +14,7 @@ public:
     int lNodow;
     std::pair <int, int> **Lista;
 
-    ListaSasiedztwa(){};
+    ListaSasiedztwa()=default;
 
 
     void WyswietlListe();

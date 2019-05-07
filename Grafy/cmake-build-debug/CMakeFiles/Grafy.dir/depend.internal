@@ -4,6 +4,7 @@
 CMakeFiles/Grafy.dir/BellmanFord.cpp.o
  /home/msz/Desktop/PAMSI/Grafy/BellmanFord.cpp
  /home/msz/Desktop/PAMSI/Grafy/BellmanFord.h
+ /home/msz/Desktop/PAMSI/Grafy/ListaSasiedztwa.h
  /home/msz/Desktop/PAMSI/Grafy/MacierzSasiedztwa.h
 CMakeFiles/Grafy.dir/Dijkstra.cpp.o
  /home/msz/Desktop/PAMSI/Grafy/Dijkstra.cpp
@@ -17,6 +18,7 @@ CMakeFiles/Grafy.dir/MacierzSasiedztwa.cpp.o
  /home/msz/Desktop/PAMSI/Grafy/MacierzSasiedztwa.cpp
  /home/msz/Desktop/PAMSI/Grafy/MacierzSasiedztwa.h
 CMakeFiles/Grafy.dir/main.cpp.o
+ /home/msz/Desktop/PAMSI/Grafy/BellmanFord.h
  /home/msz/Desktop/PAMSI/Grafy/Dijkstra.h
  /home/msz/Desktop/PAMSI/Grafy/ListaSasiedztwa.h
  /home/msz/Desktop/PAMSI/Grafy/MacierzSasiedztwa.h

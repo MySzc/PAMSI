@@ -30,7 +30,7 @@ void ListaSasiedztwa::InicjalizacjaWielkosciListy(int liczbaKrawedzi, int liczba
 
     Lista = new std::pair<int,int> * [liczbaNodow];
 
-    for (int i = 0; i < liczbaKrawedzi; i++)
+    for (int i = 0; i < liczbaNodow; i++)
         Lista[i] = new std::pair<int,int> [liczbaNodow];
 
 }

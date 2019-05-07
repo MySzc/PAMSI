@@ -13,9 +13,7 @@ public:
     int lNodow;
     int **Macierz;
 
-    MacierzSasiedztwa(){};
-   // MacierzSasiedztwa(int liczbaKrawedzi);
-
+    MacierzSasiedztwa()=default;
 
 
     void WyswietlMacierz();

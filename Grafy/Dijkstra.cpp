@@ -3,12 +3,13 @@
 //
 
 #include "Dijkstra.h"
-#include <climits>
 #include <iostream>
 #include <queue>
 #include <utility>
 #include <vector>
 #include <chrono>
+
+#define INT_MAX 1000000000
 
 int ZwrocMinIndeks_M (int dystans[], bool najkrotsza_droga[], MacierzSasiedztwa M){
 
@@ -31,7 +32,7 @@ void Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
     int *dystans = new int [M.lNodow];
     bool *najkrotsza_droga = new bool [M.lNodow];
 
-    std::cout << "MACIERZ:" << std::endl;
+    std::cout << "DIJKSTRA_MACIERZ:" << std::endl;
 
     auto start = std::chrono::steady_clock::now();
 
@@ -51,7 +52,7 @@ void Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
         najkrotsza_droga[u] = true;
 
         for (int k = 0; k < M.lKrawedzi; ++k)
-            if(!najkrotsza_droga[k] && M.Macierz[u][k] && dystans[u] != INT_MAX && dystans[u]+M.Macierz[u][k] < dystans[k])
+            if(!najkrotsza_droga[k] && M.Macierz[u][k]  && dystans[u]+M.Macierz[u][k] < dystans[k] && dystans[u] != INT_MAX)
                 dystans[k] = dystans[u] + M.Macierz[u][k];
 
     }
@@ -78,7 +79,7 @@ void Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
 
     int *dystans = new int [L.lNodow];
 
-    std::cout << "LISTA:" << std::endl;
+    std::cout << "DIJKSTRA_LISTA:" << std::endl;
 
     auto start = std::chrono::steady_clock::now();
 

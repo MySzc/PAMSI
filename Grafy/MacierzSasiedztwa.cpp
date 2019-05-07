@@ -6,17 +6,6 @@
 #include <fstream>
 #include "MacierzSasiedztwa.h"
 
-/*
-MacierzSasiedztwa::MacierzSasiedztwa(int liczbaKrawedzi){
-    lKrawedzi = liczbaKrawedzi;
-
-    Macierz = new int * [liczbaKrawedzi];
-
-    for (int i = 0; i < liczbaKrawedzi; i++)
-        Macierz[i] = new int [liczbaKrawedzi];
-
-}*/
-
 void MacierzSasiedztwa::WyswietlMacierz() {
 
     // DLA ESTETYKI
