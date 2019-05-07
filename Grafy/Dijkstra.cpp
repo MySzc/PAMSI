@@ -17,7 +17,7 @@ int ZwrocMinIndeks_M (int dystans[], bool najkrotsza_droga[], MacierzSasiedztwa 
     int min_indeks;
 
 
-    for (int i = 0; i < M.lKrawedzi ; ++i) {
+    for (int i = 0; i < M.lNodow ; ++i) {
         if( najkrotsza_droga[i] == false && dystans[i] <= min) {
             min = dystans[i];
             min_indeks = i;
@@ -51,7 +51,7 @@ void Dijkstra_M(MacierzSasiedztwa M, int Node_Start) {
 
         najkrotsza_droga[u] = true;
 
-        for (int k = 0; k < M.lKrawedzi; ++k)
+        for (int k = 0; k < M.lNodow; ++k)
             if(!najkrotsza_droga[k] && M.Macierz[u][k]  && dystans[u]+M.Macierz[u][k] < dystans[k] && dystans[u] != INT_MAX)
                 dystans[k] = dystans[u] + M.Macierz[u][k];
 
@@ -122,7 +122,6 @@ void Dijkstra_L(ListaSasiedztwa L, int Node_Start) {
     auto end = std::chrono::steady_clock::now();
 
     auto diff = end - start;
-
 
 
     std::cout << "Node koncowy:" << "           " << "Dystans od node zrodlowego:" << std::endl;

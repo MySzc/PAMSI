@@ -5,18 +5,18 @@
 #include "Dijkstra.h"
 #include "BellmanFord.h"
 
-
+//Dostepne testy: test_100.txt test_75.txt test_50.txt test_25.txt - test dla grafu o 100 wierzcholkach i wypelnieniu 100,75,50,25 %
 int main() {
 
     MacierzSasiedztwa wrkMacierz;
 
-    wrkMacierz.OdczytajGraf("test3.txt");
+    wrkMacierz.OdczytajGraf("test_25.txt");
 
     std::cout << "*********************************************" << std::endl << std::endl;
 
     ListaSasiedztwa wrkLista;
 
-    wrkLista.OdczytajGraf("test3.txt");
+    wrkLista.OdczytajGraf("test_25.txt");
 
     std::cout << std::endl << "*********************************************" << std::endl << std::endl;
 
@@ -34,5 +34,5 @@ int main() {
 
     BellmanFord_L(wrkLista, 0);
 
-    return 0;
+
 }

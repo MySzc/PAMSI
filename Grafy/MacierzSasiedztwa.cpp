@@ -36,10 +36,10 @@ void MacierzSasiedztwa::InicjalizacjaWielkosciMacierzy(int liczbaKrawedzi, int l
     lKrawedzi = liczbaKrawedzi;
     lNodow = liczbaNodow;
 
-    Macierz = new int * [liczbaKrawedzi];
+    Macierz = new int * [liczbaNodow];
 
-    for (int i = 0; i < liczbaKrawedzi; i++)
-        Macierz[i] = new int [liczbaKrawedzi];
+    for (int i = 0; i < liczbaNodow; i++)
+        Macierz[i] = new int [liczbaNodow];
 
 }
 
