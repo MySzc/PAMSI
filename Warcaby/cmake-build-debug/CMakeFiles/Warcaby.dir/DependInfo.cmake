@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/msz/Desktop/PAMSI/Warcaby/main.cpp" "/home/msz/Desktop/PAMSI/Warcaby/cmake-build-debug/CMakeFiles/Warcaby.dir/main.cpp.o"
+  "/home/msz/Desktop/PAMSI/Warcaby/plansza.cpp" "/home/msz/Desktop/PAMSI/Warcaby/cmake-build-debug/CMakeFiles/Warcaby.dir/plansza.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

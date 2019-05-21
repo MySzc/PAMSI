@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+plansza.o: plansza.cpp.o
+
+.PHONY : plansza.o
+
+# target to build an object file
+plansza.cpp.o:
+	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/plansza.cpp.o
+.PHONY : plansza.cpp.o
+
+plansza.i: plansza.cpp.i
+
+.PHONY : plansza.i
+
+# target to preprocess a source file
+plansza.cpp.i:
+	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/plansza.cpp.i
+.PHONY : plansza.cpp.i
+
+plansza.s: plansza.cpp.s
+
+.PHONY : plansza.s
+
+# target to generate assembly for a file
+plansza.cpp.s:
+	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/plansza.cpp.s
+.PHONY : plansza.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... plansza.o"
+	@echo "... plansza.i"
+	@echo "... plansza.s"
 .PHONY : help
 
 

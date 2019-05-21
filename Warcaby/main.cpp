@@ -1,10 +1,19 @@
 #include <SFML/Graphics.hpp>
-
+#include "plansza.h"
 
 int main() {
 
 
+    Plansza test;
 
+    test.inicPlanszyStart();
+
+    test.wyswietlPlansze();
+
+
+
+
+/*
     sf::RenderWindow window(sf::VideoMode(sf::VideoMode::getDesktopMode()),"Hello SFML");
 
 
@@ -49,5 +58,5 @@ int main() {
     }
 
     return 0;
-
+*/
 }

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Warcaby.dir/main.cpp.o"
+  "CMakeFiles/Warcaby.dir/plansza.cpp.o"
   "Warcaby.pdb"
   "Warcaby"
 )
