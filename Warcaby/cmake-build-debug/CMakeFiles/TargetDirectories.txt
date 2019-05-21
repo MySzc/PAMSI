@@ -1,0 +1,3 @@
+/home/msz/Desktop/PAMSI/Warcaby/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/msz/Desktop/PAMSI/Warcaby/cmake-build-debug/CMakeFiles/Warcaby.dir
+/home/msz/Desktop/PAMSI/Warcaby/cmake-build-debug/CMakeFiles/edit_cache.dir
