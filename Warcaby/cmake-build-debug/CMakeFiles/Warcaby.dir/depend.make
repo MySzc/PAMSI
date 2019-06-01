@@ -77,7 +77,14 @@ CMakeFiles/Warcaby.dir/main.cpp.o: ../SFML-2.5.1/include/SFML/Window/WindowHandl
 CMakeFiles/Warcaby.dir/main.cpp.o: ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/Warcaby.dir/main.cpp.o: ../main.cpp
 CMakeFiles/Warcaby.dir/main.cpp.o: ../plansza.h
+CMakeFiles/Warcaby.dir/main.cpp.o: ../usprawnienia.h
+CMakeFiles/Warcaby.dir/main.cpp.o: ../wielkosci.h
 
 CMakeFiles/Warcaby.dir/plansza.cpp.o: ../plansza.cpp
 CMakeFiles/Warcaby.dir/plansza.cpp.o: ../plansza.h
+CMakeFiles/Warcaby.dir/plansza.cpp.o: ../usprawnienia.h
+CMakeFiles/Warcaby.dir/plansza.cpp.o: ../wielkosci.h
+
+CMakeFiles/Warcaby.dir/usprawnienia.cpp.o: ../usprawnienia.cpp
+CMakeFiles/Warcaby.dir/usprawnienia.cpp.o: ../usprawnienia.h
 

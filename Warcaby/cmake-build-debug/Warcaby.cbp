@@ -95,6 +95,15 @@
 		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/plansza.h">
 			<Option target="Warcaby"/>
 		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/usprawnienia.cpp">
+			<Option target="Warcaby"/>
+		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h">
+			<Option target="Warcaby"/>
+		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/wielkosci.h">
+			<Option target="Warcaby"/>
+		</Unit>
 		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

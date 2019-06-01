@@ -1,16 +1,35 @@
 #include <SFML/Graphics.hpp>
+
+#include "wielkosci.h"
 #include "plansza.h"
+#include "usprawnienia.h"
+#include <iostream>
 
 int main() {
 
 
-    Plansza test;
+   Plansza test;
 
-    test.inicPlanszyStart();
+   test.inicjalizujPlanszeStart();
+   test.wyswietlPlansze();
+
+    test.ruchPionka(5,2,4,3);
+
+    std::cout << "****************************************************************" << std::endl;
 
     test.wyswietlPlansze();
 
+    test.ruchPionka(2,5,3,4);
 
+    std::cout << "****************************************************************" << std::endl;
+
+    test.wyswietlPlansze();
+
+    test.biciePionka(4,3,2,5);
+
+    std::cout << "****************************************************************" << std::endl;
+
+    test.wyswietlPlansze();
 
 
 /*

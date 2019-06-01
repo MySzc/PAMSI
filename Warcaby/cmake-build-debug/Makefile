@@ -177,6 +177,33 @@ plansza.cpp.s:
 	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/plansza.cpp.s
 .PHONY : plansza.cpp.s
 
+usprawnienia.o: usprawnienia.cpp.o
+
+.PHONY : usprawnienia.o
+
+# target to build an object file
+usprawnienia.cpp.o:
+	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/usprawnienia.cpp.o
+.PHONY : usprawnienia.cpp.o
+
+usprawnienia.i: usprawnienia.cpp.i
+
+.PHONY : usprawnienia.i
+
+# target to preprocess a source file
+usprawnienia.cpp.i:
+	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/usprawnienia.cpp.i
+.PHONY : usprawnienia.cpp.i
+
+usprawnienia.s: usprawnienia.cpp.s
+
+.PHONY : usprawnienia.s
+
+# target to generate assembly for a file
+usprawnienia.cpp.s:
+	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/usprawnienia.cpp.s
+.PHONY : usprawnienia.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... plansza.o"
 	@echo "... plansza.i"
 	@echo "... plansza.s"
+	@echo "... usprawnienia.o"
+	@echo "... usprawnienia.i"
+	@echo "... usprawnienia.s"
 .PHONY : help
 
 

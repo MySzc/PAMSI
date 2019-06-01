@@ -5,23 +5,57 @@
 #ifndef WARCABY_PLANSZA_H
 #define WARCABY_PLANSZA_H
 
-#include <utility>
+#include "wielkosci.h"
+#include "usprawnienia.h"
 
-class Plansza{
+enum typPionka{
+    CZARNY,
+    BIALY,
+    CZARNY_DAMA,
+    BIALY_DAMA,
+    PUSTE,
+    NIEDOZWOLONE_POLE,
+};
 
-    // Pierwszy element pary != 0 -> pionek bialy, Drugi element pary != 0 -> pionek czarny
-    // wartość elementu: 0 - brak pionka, 1 - zwykly pionek, 2 - krolowa
-    std::pair<int,int> _Plansza[8][8];
+class Pole{
+private:
+
+    typPionka Typ;
+    int poz_x;
+    int poz_y;
 
 public:
 
-    Plansza();
+    Pole()= default;
 
-    void inicPlanszyStart();
+    void setPozX(int poz);
+    void setPozY(int poz);
+    void setPozXY(int x, int y);
+    void setTyp(typPionka typ);
+
+    int retPozX();
+    int retPozY();
+    typPionka retTyp();
+
+};
+
+
+class Plansza{
+private:
+
+    Pole plansza_do_gry[WIELKOSC_PLANSZY][WIELKOSC_PLANSZY];
+
+public:
+
+    Plansza()= default;
+
+    void inicjalizujPlansze();
+    void inicjalizujPlanszeStart();
     void wyswietlPlansze();
 
-
-
+    void zmienTyp(int x, int y, typPionka typ);
+    void ruchPionka(int start_x, int start_y, int end_x, int end_y);
+    void biciePionka(int start_x, int start_y, int end_x, int end_y);
 };
 
 
