@@ -3,6 +3,7 @@
 //
 
 #include "usprawnienia.h"
+#include "plansza.h"
 
 kierunkiRuchu sprawdzKierunekRuchu(int start_x, int start_y, int end_x, int end_y) {
 
@@ -49,4 +50,5 @@ int kierunekZbityPionka_Y(int end_y, kierunkiRuchu kier) {
             return 0;
     }
 }
+
 

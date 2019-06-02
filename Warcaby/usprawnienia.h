@@ -5,6 +5,14 @@
 #ifndef WARCABY_USPRAWNIENIA_H
 #define WARCABY_USPRAWNIENIA_H
 
+enum typPionka{
+    CZARNY,
+    BIALY,
+    CZARNY_DAMA,
+    BIALY_DAMA,
+    PUSTE,
+    NIEDOZWOLONE_POLE,
+};
 
 enum kierunkiRuchu{
 
@@ -20,6 +28,14 @@ kierunkiRuchu sprawdzKierunekRuchu(int start_x, int start_y, int end_x, int end_
 int kierunekZbityPionka_X(int end_x, kierunkiRuchu kier);
 
 int kierunekZbityPionka_Y(int end_y, kierunkiRuchu kier);
+
+
+enum turaGry{
+
+    TURA_BIALE,
+    TURA_CZARNE,
+    BRAK,
+};
 
 
 

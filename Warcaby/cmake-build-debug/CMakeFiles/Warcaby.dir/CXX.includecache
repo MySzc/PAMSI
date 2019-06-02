@@ -676,14 +676,6 @@ SFML/Config.hpp
 
 ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 
-/home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.cpp
-akcesoriaDoGry.h
-/home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.h
-wielkosci.h
-/home/msz/Desktop/PAMSI/Warcaby/wielkosci.h
-usprawnienia.h
-/home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h
-
 /home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.h
 wielkosci.h
 /home/msz/Desktop/PAMSI/Warcaby/wielkosci.h
@@ -693,6 +685,40 @@ SFML/Graphics.hpp
 -
 string
 -
+
+/home/msz/Desktop/PAMSI/Warcaby/gra.h
+akcesoriaDoGry.h
+/home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.h
+plansza.h
+/home/msz/Desktop/PAMSI/Warcaby/plansza.h
+wielkosci.h
+/home/msz/Desktop/PAMSI/Warcaby/wielkosci.h
+usprawnienia.h
+/home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h
+SFML/Graphics.hpp
+-
+
+/home/msz/Desktop/PAMSI/Warcaby/main.cpp
+SFML/Graphics.hpp
+-
+wielkosci.h
+/home/msz/Desktop/PAMSI/Warcaby/wielkosci.h
+plansza.h
+/home/msz/Desktop/PAMSI/Warcaby/plansza.h
+usprawnienia.h
+/home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h
+akcesoriaDoGry.h
+/home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.h
+gra.h
+/home/msz/Desktop/PAMSI/Warcaby/gra.h
+iostream
+-
+
+/home/msz/Desktop/PAMSI/Warcaby/plansza.h
+wielkosci.h
+/home/msz/Desktop/PAMSI/Warcaby/wielkosci.h
+usprawnienia.h
+/home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h
 
 /home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h
 

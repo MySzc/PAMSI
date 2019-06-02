@@ -22,10 +22,16 @@ public:
 
 
     sf::Sprite spritePlanszy;
+    sf::Sprite spritePionkaBialy;
+    sf::Sprite spritePionkaCzarny;
+    sf::Sprite spriteDamyBialy;
+    sf::Sprite spriteDamyCzarny;
 
-
+    akcesoriaGry()=default;
 
     void setTeksturaPlanszy(std::string tekstura);
+    void setTeksturaPionka(std::string bialy, std::string czarny);
+    void setTeksturaDamy(std::string bialy, std::string czarny);
 
 
 

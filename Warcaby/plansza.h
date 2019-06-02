@@ -8,14 +8,7 @@
 #include "wielkosci.h"
 #include "usprawnienia.h"
 
-enum typPionka{
-    CZARNY,
-    BIALY,
-    CZARNY_DAMA,
-    BIALY_DAMA,
-    PUSTE,
-    NIEDOZWOLONE_POLE,
-};
+
 
 class Pole{
 private:
@@ -23,6 +16,7 @@ private:
     typPionka Typ;
     int poz_x;
     int poz_y;
+    bool zaznacz;
 
 public:
 
@@ -32,6 +26,9 @@ public:
     void setPozY(int poz);
     void setPozXY(int x, int y);
     void setTyp(typPionka typ);
+    void zaznaczPionka();
+    void odznaczPionka();
+    bool czyZaznaczonyPionek();
 
     int retPozX();
     int retPozY();
@@ -56,6 +53,9 @@ public:
     void zmienTyp(int x, int y, typPionka typ);
     void ruchPionka(int start_x, int start_y, int end_x, int end_y);
     void biciePionka(int start_x, int start_y, int end_x, int end_y);
+
+    Pole zwrocPole(int x,int y);
+    typPionka zwrocTypPionka(int x, int y);
 };
 
 

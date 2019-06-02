@@ -52,6 +52,22 @@ typPionka Pole::retTyp() {
 }
 
 
+void Pole::zaznaczPionka() {
+
+    this->zaznacz = true;
+}
+
+void Pole::odznaczPionka() {
+
+    this->zaznacz = false;
+
+}
+
+bool Pole::czyZaznaczonyPionek() {
+    return this->zaznacz;
+}
+
+
 void Plansza::inicjalizujPlansze() {
 
     for (int i = 0; i < WIELKOSC_PLANSZY; ++i) {
@@ -140,4 +156,14 @@ void Plansza::biciePionka(int start_x, int start_y, int end_x, int end_y) {
 
     this->zmienTyp(kierunekZbityPionka_X(end_x, tmp), kierunekZbityPionka_Y(end_y, tmp), PUSTE);
 }
+
+Pole Plansza::zwrocPole(int x, int y) {
+    return this->plansza_do_gry[x][y];
+}
+
+typPionka Plansza::zwrocTypPionka(int x, int y) {
+    return this->zwrocPole(x,y).retTyp();
+}
+
+
 
