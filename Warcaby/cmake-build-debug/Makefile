@@ -123,6 +123,33 @@ Warcaby/fast:
 	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/build
 .PHONY : Warcaby/fast
 
+akcesoriaDoGry.o: akcesoriaDoGry.cpp.o
+
+.PHONY : akcesoriaDoGry.o
+
+# target to build an object file
+akcesoriaDoGry.cpp.o:
+	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/akcesoriaDoGry.cpp.o
+.PHONY : akcesoriaDoGry.cpp.o
+
+akcesoriaDoGry.i: akcesoriaDoGry.cpp.i
+
+.PHONY : akcesoriaDoGry.i
+
+# target to preprocess a source file
+akcesoriaDoGry.cpp.i:
+	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/akcesoriaDoGry.cpp.i
+.PHONY : akcesoriaDoGry.cpp.i
+
+akcesoriaDoGry.s: akcesoriaDoGry.cpp.s
+
+.PHONY : akcesoriaDoGry.s
+
+# target to generate assembly for a file
+akcesoriaDoGry.cpp.s:
+	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/akcesoriaDoGry.cpp.s
+.PHONY : akcesoriaDoGry.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Warcaby"
 	@echo "... edit_cache"
+	@echo "... akcesoriaDoGry.o"
+	@echo "... akcesoriaDoGry.i"
+	@echo "... akcesoriaDoGry.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

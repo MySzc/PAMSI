@@ -86,6 +86,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.cpp">
+			<Option target="Warcaby"/>
+		</Unit>
+		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.h">
+			<Option target="Warcaby"/>
+		</Unit>
 		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/main.cpp">
 			<Option target="Warcaby"/>
 		</Unit>
