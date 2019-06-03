@@ -6,14 +6,17 @@
 #include "akcesoriaDoGry.h"
 #include "gra.h"
 #include <iostream>
+#include <utility>
 
 int main() {
 
+
+
+
+/*
     graWarcaby GRA;
 
     GRA.planszaDoGry.inicjalizujPlanszeStart();
-
-    GRA.planszaDoGry.ruchPionka(5,2,4,3);
 
     GRA.akcesoriaDoGry.setTeksturaPlanszy("board.png");
     GRA.akcesoriaDoGry.setTeksturaDamy("bialyKrolowa.png","czarnyKrolowa.png");
@@ -34,22 +37,28 @@ int main() {
             }
 
             if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left ){
-                mysz = sf::Mouse::getPosition( window );
-                std::cout << "L " << mysz.y/100 << " ; " << mysz.x/100<< std::endl;
 
-                if (GRA.planszaDoGry.zwrocTypPionka(mysz.y/100, mysz.x/100)!= PUSTE ||
-                    GRA.planszaDoGry.zwrocTypPionka(mysz.y/100, mysz.x/100) != NIEDOZWOLONE_POLE){
+                mysz = sf::Mouse::getPosition( window );
+
+                if (GRA.planszaDoGry.zwrocPole(mysz.y/100,mysz.x/100).retTyp() != PUSTE ||
+                    GRA.planszaDoGry.zwrocPole(mysz.y/100,mysz.x/100).retTyp() != NIEDOZWOLONE_POLE){
+
+                    std::cout << "L " << mysz.y/100 << " ; " << mysz.x/100<< std::endl;
 
                     GRA.odznaczWszystkiePozaJednym(mysz.y/100, mysz.x/100);
                 }
             }
 
-            if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left ){
-                mysz = sf::Mouse::getPosition( window );
-                std::cout << "L " << mysz.x/100 << " ; " << mysz.y/100<< std::endl;
+            if(GRA.czyCosJestZaznaczone())
+                std::cout<< "Cos jest zaznaczone" <<std::endl;
 
-                if (GRA.planszaDoGry.zwrocTypPionka(mysz.y/100, mysz.x/100)!= PUSTE ||
-                    GRA.planszaDoGry.zwrocTypPionka(mysz.y/100, mysz.x/100) != NIEDOZWOLONE_POLE){
+            if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Right ){
+
+                mysz = sf::Mouse::getPosition( window );
+
+                if (GRA.planszaDoGry.zwrocPole(mysz.y/100,mysz.x/100).retTyp() == PUSTE){
+
+                    std::cout << "P " << mysz.y/100 << " ; " << mysz.x/100<< std::endl;
 
                     GRA.planszaDoGry.ruchPionka(GRA.zwrocZaznaczoneX(), GRA.zwrocZaznaczoneY(),  mysz.y/100, mysz.x/100);
 
@@ -79,10 +88,10 @@ int main() {
                     else if(GRA.planszaDoGry.zwrocTypPionka(x,y) == BIALY_DAMA)
                         window.draw(GRA.akcesoriaDoGry.spriteDamyBialy);
 
-                    if(x == 7 && y == 7) {
-                        std::cout << "********************************************" << std::endl;
-                        GRA.planszaDoGry.wyswietlPlansze();
-                    }
+                    //if(x == 7 && y == 7) {
+                     //   std::cout << "********************************************" << std::endl;
+                     //   GRA.planszaDoGry.wyswietlPlansze();
+                   // }
                 }
             }
 
@@ -91,7 +100,7 @@ int main() {
 
     }
 
-
+*/
 
 /*
    Plansza test;

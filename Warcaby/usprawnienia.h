@@ -6,6 +6,7 @@
 #define WARCABY_USPRAWNIENIA_H
 
 enum typPionka{
+
     CZARNY,
     BIALY,
     CZARNY_DAMA,
@@ -20,7 +21,7 @@ enum kierunkiRuchu{
     GORA_PRAWO,
     DOL_LEWO,
     DOL_PRAWO,
-    BLAD,
+    BRAK_RUCHU,
 };
 
 kierunkiRuchu sprawdzKierunekRuchu(int start_x, int start_y, int end_x, int end_y);
@@ -36,7 +37,6 @@ enum turaGry{
     TURA_CZARNE,
     BRAK,
 };
-
 
 
 #endif //WARCABY_USPRAWNIENIA_H

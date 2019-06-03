@@ -33,11 +33,6 @@ public:
     void setTeksturaPionka(std::string bialy, std::string czarny);
     void setTeksturaDamy(std::string bialy, std::string czarny);
 
-
-
-
-
-
 };
 
 

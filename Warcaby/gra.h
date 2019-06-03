@@ -24,6 +24,7 @@ public:
 
     void odznaczWszystkiePozaJednym(int x, int y);
     void odznaczWszystkie();
+    bool czyCosJestZaznaczone();
 
     int zwrocZaznaczoneX();
     int zwrocZaznaczoneY();

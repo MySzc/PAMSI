@@ -14,26 +14,32 @@ class Pole{
 private:
 
     typPionka Typ;
-    int poz_x;
-    int poz_y;
     bool zaznacz;
+    kierunkiRuchu kierunki[4];
 
 public:
 
     Pole()= default;
 
-    void setPozX(int poz);
-    void setPozY(int poz);
-    void setPozXY(int x, int y);
-    void setTyp(typPionka typ);
+    void ustawTyp(typPionka typ);
+    typPionka zwrocTyp();
+
+    bool czyPuste();
+    bool czyNiedozwolonePole();
+    bool czyBialyPionek();
+    bool czyCzarnyPionek();
+    bool czyBialyDama();
+    bool czyCzarnyDama();
+
+    void ustawKierunekGL();
+    void ustawKierunekGP();
+    void ustawKierunekDP();
+    void ustawKierunekDL();
+    void ustawBrakRuchu(int indeks);
+
     void zaznaczPionka();
     void odznaczPionka();
     bool czyZaznaczonyPionek();
-
-    int retPozX();
-    int retPozY();
-    typPionka retTyp();
-
 };
 
 
@@ -46,16 +52,15 @@ public:
 
     Plansza()= default;
 
+    Pole zwrocPole(int x,int y);
+
     void inicjalizujPlansze();
     void inicjalizujPlanszeStart();
-    void wyswietlPlansze();
 
-    void zmienTyp(int x, int y, typPionka typ);
+    void wyswietlPlanszeTerminal();
+
     void ruchPionka(int start_x, int start_y, int end_x, int end_y);
-    void biciePionka(int start_x, int start_y, int end_x, int end_y);
 
-    Pole zwrocPole(int x,int y);
-    typPionka zwrocTypPionka(int x, int y);
 };
 
 

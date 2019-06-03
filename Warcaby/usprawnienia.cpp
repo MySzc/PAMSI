@@ -16,7 +16,7 @@ kierunkiRuchu sprawdzKierunekRuchu(int start_x, int start_y, int end_x, int end_
     else if(( end_x - start_x > 0) && ( end_y - start_y > 0))
         return DOL_PRAWO;
     else
-        return BLAD;
+        return BRAK_RUCHU;
 }
 
 int kierunekZbityPionka_X(int end_x, kierunkiRuchu kier) {

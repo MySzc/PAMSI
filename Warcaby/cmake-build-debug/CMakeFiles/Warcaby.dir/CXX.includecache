@@ -686,6 +686,12 @@ SFML/Graphics.hpp
 string
 -
 
+/home/msz/Desktop/PAMSI/Warcaby/gra.cpp
+gra.h
+/home/msz/Desktop/PAMSI/Warcaby/gra.h
+iostream
+-
+
 /home/msz/Desktop/PAMSI/Warcaby/gra.h
 akcesoriaDoGry.h
 /home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.h
@@ -713,12 +719,30 @@ gra.h
 /home/msz/Desktop/PAMSI/Warcaby/gra.h
 iostream
 -
+utility
+-
+
+/home/msz/Desktop/PAMSI/Warcaby/plansza.cpp
+plansza.h
+/home/msz/Desktop/PAMSI/Warcaby/plansza.h
+wielkosci.h
+/home/msz/Desktop/PAMSI/Warcaby/wielkosci.h
+iostream
+-
+cmath
+-
 
 /home/msz/Desktop/PAMSI/Warcaby/plansza.h
 wielkosci.h
 /home/msz/Desktop/PAMSI/Warcaby/wielkosci.h
 usprawnienia.h
 /home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h
+
+/home/msz/Desktop/PAMSI/Warcaby/usprawnienia.cpp
+usprawnienia.h
+/home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h
+plansza.h
+/home/msz/Desktop/PAMSI/Warcaby/plansza.h
 
 /home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h
 
