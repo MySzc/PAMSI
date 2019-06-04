@@ -32,40 +32,44 @@ int main() {
                 window.close();
             }
 
-            if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left ){
 
-                mysz = sf::Mouse::getPosition( window );
+                if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
 
-                if ( ((GRA.plansza_do_gry[mysz.x/100][mysz.y/100].zwrocTyp() != PUSTE) ||
-                     (GRA.plansza_do_gry[mysz.x/100][mysz.y/100].zwrocTyp() != NIEDOZWOLONE_POLE)) &&
-                      !GRA.czyCosJestZaznaczone() ){
+                    mysz = sf::Mouse::getPosition(window);
 
-                    std::cout << "L " << mysz.x/100 << " ; " << mysz.y/100<< std::endl;
+                    //if (((GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() != PUSTE) ||
+                     //    (GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() != NIEDOZWOLONE_POLE)) &&
+                     //   !GRA.czyCosJestZaznaczone()) {
+                    if((GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() == BIALY)  &&
+                       !GRA.czyCosJestZaznaczone()){
 
-                    GRA.odznaczWszystkie();
-                    GRA.plansza_do_gry[mysz.x/100][mysz.y/100].zaznaczPionka();
+                        std::cout << "L " << mysz.y / 100 << " ; " << mysz.x / 100 << std::endl;
+
+                        GRA.odznaczWszystkie();
+                        GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zaznaczPionka();
+                    }
                 }
-            }
 
-            if(GRA.czyCosJestZaznaczone())
-                std::cout<< "Cos jest zaznaczone" <<std::endl;
+                if (GRA.czyCosJestZaznaczone())
+                    std::cout << "Cos jest zaznaczone" << std::endl;
 
-            if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Right ){
+                if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Right) {
 
-                mysz = sf::Mouse::getPosition( window );
+                    mysz = sf::Mouse::getPosition(window);
 
-                if (GRA.plansza_do_gry[mysz.x/100][mysz.y/100].zwrocTyp() == PUSTE &&
-                    GRA.czyCosJestZaznaczone() ){
+                    if (GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() == PUSTE &&
+                        GRA.czyCosJestZaznaczone() && GRA.czyRuchJestDozwolonyGracz(mysz.x / 100,mysz.y / 100)) {
 
-                    std::cout << "P " << mysz.x/100 << " ; " << mysz.y/100<< std::endl;
+                        std::cout << "P " << mysz.y / 100 << " ; " << mysz.x / 100 << std::endl;
 
-                    GRA.ruchPionkaZaznaczenie(mysz.y/100, mysz.x/100);
+                        GRA.ruchPionkaZaznaczenie(mysz.x / 100, mysz.y / 100);
 
-                    GRA.odznaczWszystkie();
+                        GRA.odznaczWszystkie();
+                    }
                 }
+
+
             }
-
-
 
 
             window.draw(tekstury.spritePlanszy);
@@ -172,4 +176,3 @@ int main() {
 
     return 0;
 */
-}

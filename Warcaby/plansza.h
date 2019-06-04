@@ -49,9 +49,9 @@ public:
 
 
 
-    Plansza();
+    Plansza()= default;
 
-    Pole zwrocPole(int x,int y);
+    //Pole zwrocPole(int x,int y);
 
     void inicjalizujPlansze();
     void inicjalizujPlanszeStart();
@@ -66,6 +66,9 @@ public:
 
     void odznaczWszystkie();
     bool czyCosJestZaznaczone();
+
+    bool czyRuchJestDozwolonyGracz(int end_x, int end_y);
+    bool czyBicieJestDozwoloneGracz(int end_x, int end_y);
 };
 
 

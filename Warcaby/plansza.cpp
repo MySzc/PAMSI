@@ -102,27 +102,12 @@ void Pole::ustawBrakRuchu(int indeks) {
 
 
 
-Plansza::Plansza() {
-
-    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
-        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
-
-            if( ((y%2 == 0) && (x%2 ==0)) || ((y%2 != 0) && (x%2 != 0)))
-                this->plansza_do_gry[x][y].ustawTyp(NIEDOZWOLONE_POLE);
-            else if ( ( ((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y < 3) )
-                this->plansza_do_gry[x][y].ustawTyp(CZARNY);
-            else if ( (((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y > 4) )
-                this->plansza_do_gry[x][y].ustawTyp(BIALY);
-        }
-    }
-
-}
-
-
+/*
 Pole Plansza::zwrocPole(int x, int y) {
 
     return this->plansza_do_gry[x][y];
 }
+*/
 
 void Plansza::inicjalizujPlansze() {
 
@@ -147,9 +132,9 @@ void Plansza::inicjalizujPlanszeStart() {
 
             if( ((y%2 == 0) && (x%2 ==0)) || ((y%2 != 0) && (x%2 != 0)))
                 this->plansza_do_gry[x][y].ustawTyp(NIEDOZWOLONE_POLE);
-            else if ( ( ((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y < 3) )
+            else if ( ( ((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (x < 3) )
                 this->plansza_do_gry[x][y].ustawTyp(CZARNY);
-            else if ( (((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y > 4) )
+            else if ( (((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (x > 4) )
                 this->plansza_do_gry[x][y].ustawTyp(BIALY);
         }
     }
@@ -157,8 +142,8 @@ void Plansza::inicjalizujPlanszeStart() {
 
 void Plansza::wyswietlPlanszeTerminal() {
 
-    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
-        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+    for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+        for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
 
             if (this->plansza_do_gry[x][y].zwrocTyp() == NIEDOZWOLONE_POLE)
                 std::cout << "|||" << " ";
@@ -198,8 +183,8 @@ void Plansza::ruchPionkaZaznaczenie(int end_x, int end_y) {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-           if(this->plansza_do_gry[x][y].czyZaznaczonyPionek())
-               this->ruchPionkaKoordynaty(x,y,end_x,end_y);
+           if(this->plansza_do_gry[y][x].czyZaznaczonyPionek())
+               this->ruchPionkaKoordynaty(y,x,end_y,end_x);
 
         }
     }
@@ -257,6 +242,64 @@ int Plansza::ileCzarnychPionkow() {
     }
 
     return licznik;
+}
+
+bool Plansza::czyRuchJestDozwolonyGracz(int end_x, int end_y) {
+
+    int start_x=0, start_y=0;
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->plansza_do_gry[x][y].czyZaznaczonyPionek()) {
+                start_x = y;
+                start_y = x;
+            }
+        }
+    }
+
+    //RUCH DAMKI
+    if(plansza_do_gry[start_y][start_x].zwrocTyp() == BIALY_DAMA){
+
+        return (abs(end_x - start_x)  == abs(end_y - start_y));
+
+    }//RUCH PIONKA
+    else if( ((abs(end_x - start_x) == abs(end_y - start_y)) && (abs(end_y - start_y) == 1)) && (plansza_do_gry[start_y][start_x].zwrocTyp() == BIALY) ) {
+
+        return true;
+
+    };
+
+    return false;
+}
+
+bool Plansza::czyBicieJestDozwoloneGracz(int end_x, int end_y) {
+
+    int start_x=0, start_y=0;
+    int bity_x=0, bity_y=0;
+    kierunkiRuchu kier;
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->plansza_do_gry[x][y].czyZaznaczonyPionek()) {
+                start_x = x;
+                start_y = y;
+            }
+        }
+    }
+
+    if( (((abs(end_x - start_x) == abs(end_y - start_y)) && (abs(end_y - start_y) == 2))  && (plansza_do_gry[start_y][start_x].zwrocTyp() == BIALY) )){
+
+        kier = sprawdzKierunekRuchu(start_x,start_y,end_x,end_y);
+
+        bity_x = kierunekZbityPionka_X(end_x, kier);
+        bity_y = kierunekZbityPionka_Y(end_y, kier);
+
+        return (plansza_do_gry[bity_y][bity_x].zwrocTyp() == CZARNY || plansza_do_gry[bity_y][bity_x].zwrocTyp() == CZARNY_DAMA);
+    };
+
+    return false;
 }
 
 
