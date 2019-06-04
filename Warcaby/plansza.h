@@ -18,7 +18,6 @@ public:
     kierunkiRuchu kierunki[ILOSC_RUCHOW];
 
 
-
     Pole();
 
     void ustawTyp(typPionka typ);

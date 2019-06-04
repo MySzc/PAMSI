@@ -15,7 +15,7 @@ Pole::Pole() {
     this->odznaczPionka();
 
     for (int indeks = 0; indeks < ILOSC_RUCHOW; ++indeks) {
-        this->ustawBrakRuchu(0);
+        this->ustawBrakRuchu(indeks);
     }
 }
 
@@ -108,11 +108,11 @@ Plansza::Plansza() {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
             if( ((y%2 == 0) && (x%2 ==0)) || ((y%2 != 0) && (x%2 != 0)))
-                this->zwrocPole(x,y).ustawTyp(NIEDOZWOLONE_POLE);
+                this->plansza_do_gry[x][y].ustawTyp(NIEDOZWOLONE_POLE);
             else if ( ( ((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y < 3) )
-                this->zwrocPole(x,y).ustawTyp(CZARNY);
+                this->plansza_do_gry[x][y].ustawTyp(CZARNY);
             else if ( (((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y > 4) )
-                this->zwrocPole(x,y).ustawTyp(BIALY);
+                this->plansza_do_gry[x][y].ustawTyp(BIALY);
         }
     }
 
@@ -129,9 +129,9 @@ void Plansza::inicjalizujPlansze() {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-            this->zwrocPole(x,y).odznaczPionka();
+            this->plansza_do_gry[x][y].odznaczPionka();
 
-            this->zwrocPole(x,y).ustawTyp(PUSTE);
+            this->plansza_do_gry[x][y].ustawTyp(PUSTE);
 
         }
     }
@@ -146,11 +146,11 @@ void Plansza::inicjalizujPlanszeStart() {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
             if( ((y%2 == 0) && (x%2 ==0)) || ((y%2 != 0) && (x%2 != 0)))
-                this->zwrocPole(x,y).ustawTyp(NIEDOZWOLONE_POLE);
+                this->plansza_do_gry[x][y].ustawTyp(NIEDOZWOLONE_POLE);
             else if ( ( ((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y < 3) )
-                this->zwrocPole(x,y).ustawTyp(CZARNY);
+                this->plansza_do_gry[x][y].ustawTyp(CZARNY);
             else if ( (((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y > 4) )
-                this->zwrocPole(x,y).ustawTyp(BIALY);
+                this->plansza_do_gry[x][y].ustawTyp(BIALY);
         }
     }
 }
@@ -160,22 +160,22 @@ void Plansza::wyswietlPlanszeTerminal() {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-            if (this->zwrocPole(x,y).zwrocTyp() == NIEDOZWOLONE_POLE)
+            if (this->plansza_do_gry[x][y].zwrocTyp() == NIEDOZWOLONE_POLE)
                 std::cout << "|||" << " ";
             else
-            if (this->zwrocPole(x,y).zwrocTyp() == PUSTE)
+            if (this->plansza_do_gry[x][y].zwrocTyp() == PUSTE)
                 std::cout << "___" << " ";
             else
-            if (this->zwrocPole(x,y).zwrocTyp() == BIALY)
+            if (this->plansza_do_gry[x][y].zwrocTyp() == BIALY)
                 std::cout << " b " << " ";
             else
-            if (this->zwrocPole(x,y).zwrocTyp() == CZARNY)
+            if (this->plansza_do_gry[x][y].zwrocTyp() == CZARNY)
                 std::cout << " c " << " ";
             else
-            if (this->zwrocPole(x,y).zwrocTyp() == BIALY_DAMA)
+            if (this->plansza_do_gry[x][y].zwrocTyp() == BIALY_DAMA)
                 std::cout << " B " << " ";
             else
-            if (this->zwrocPole(x,y).zwrocTyp() == CZARNY_DAMA)
+            if (this->plansza_do_gry[x][y].zwrocTyp() == CZARNY_DAMA)
                 std::cout << " C " << " ";
 
         }
@@ -187,9 +187,9 @@ void Plansza::wyswietlPlanszeTerminal() {
 
 void Plansza::ruchPionkaKoordynaty(int start_x, int start_y, int end_x, int end_y) {
 
-    this->zwrocPole(end_x,end_y).ustawTyp( this->zwrocPole(start_x,start_y).zwrocTyp() );
+    this->plansza_do_gry[end_x][end_y].ustawTyp( this->plansza_do_gry[start_x][start_y].zwrocTyp() );
 
-    this->zwrocPole(start_x,start_y).ustawTyp(PUSTE);
+    this->plansza_do_gry[start_x][start_y].ustawTyp(PUSTE);
 
 }
 
@@ -198,7 +198,7 @@ void Plansza::ruchPionkaZaznaczenie(int end_x, int end_y) {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-           if(this->zwrocPole(x,y).czyZaznaczonyPionek())
+           if(this->plansza_do_gry[x][y].czyZaznaczonyPionek())
                this->ruchPionkaKoordynaty(x,y,end_x,end_y);
 
         }
@@ -211,7 +211,7 @@ void Plansza::odznaczWszystkie() {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-            this->zwrocPole(x,y).odznaczPionka();
+            this->plansza_do_gry[x][y].odznaczPionka();
         }
     }
 }
@@ -221,7 +221,7 @@ bool Plansza::czyCosJestZaznaczone() {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-            if(this->zwrocPole(x,y).czyZaznaczonyPionek())
+            if(this->plansza_do_gry[x][y].czyZaznaczonyPionek())
                 return true;
         }
     }
@@ -236,7 +236,7 @@ int Plansza::ileBialychPionkow() {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-            if(this->zwrocPole(x,y).zwrocTyp() == BIALY || this->zwrocPole(x,y).zwrocTyp() == BIALY_DAMA)
+            if(this->plansza_do_gry[x][y].zwrocTyp() == BIALY || this->plansza_do_gry[x][y].zwrocTyp() == BIALY_DAMA)
                 licznik++;
         }
     }
@@ -251,7 +251,7 @@ int Plansza::ileCzarnychPionkow() {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-            if(this->zwrocPole(x,y).zwrocTyp() == CZARNY || this->zwrocPole(x,y).zwrocTyp() == CZARNY_DAMA)
+            if(this->plansza_do_gry[x][y].zwrocTyp() == CZARNY || this->plansza_do_gry[x][y].zwrocTyp() == CZARNY_DAMA)
                 licznik++;
         }
     }

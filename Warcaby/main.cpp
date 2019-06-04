@@ -36,14 +36,14 @@ int main() {
 
                 mysz = sf::Mouse::getPosition( window );
 
-                if ( ((GRA.zwrocPole(mysz.x/100,mysz.y/100).zwrocTyp() != PUSTE) ||
-                     (GRA.zwrocPole(mysz.x/100,mysz.y/100).zwrocTyp() != NIEDOZWOLONE_POLE)) &&
+                if ( ((GRA.plansza_do_gry[mysz.x/100][mysz.y/100].zwrocTyp() != PUSTE) ||
+                     (GRA.plansza_do_gry[mysz.x/100][mysz.y/100].zwrocTyp() != NIEDOZWOLONE_POLE)) &&
                       !GRA.czyCosJestZaznaczone() ){
 
                     std::cout << "L " << mysz.x/100 << " ; " << mysz.y/100<< std::endl;
 
                     GRA.odznaczWszystkie();
-                    GRA.zwrocPole(mysz.x/100, mysz.y/100).zaznaczPionka();
+                    GRA.plansza_do_gry[mysz.x/100][mysz.y/100].zaznaczPionka();
                 }
             }
 
@@ -54,7 +54,7 @@ int main() {
 
                 mysz = sf::Mouse::getPosition( window );
 
-                if (GRA.zwrocPole(mysz.x/100,mysz.y/100).zwrocTyp() == PUSTE &&
+                if (GRA.plansza_do_gry[mysz.x/100][mysz.y/100].zwrocTyp() == PUSTE &&
                     GRA.czyCosJestZaznaczone() ){
 
                     std::cout << "P " << mysz.x/100 << " ; " << mysz.y/100<< std::endl;
@@ -78,13 +78,13 @@ int main() {
                     tekstury.spriteDamyBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
                     tekstury.spriteDamyCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
 
-                    if(GRA.zwrocPole(x,y).zwrocTyp() == BIALY)
+                    if(GRA.plansza_do_gry[x][y].zwrocTyp() == BIALY)
                         window.draw(tekstury.spritePionkaBialy);
-                    else if(GRA.zwrocPole(x,y).zwrocTyp() == CZARNY)
+                    else if(GRA.plansza_do_gry[x][y].zwrocTyp() == CZARNY)
                         window.draw(tekstury.spritePionkaCzarny);
-                    else if(GRA.zwrocPole(x,y).zwrocTyp() == CZARNY_DAMA)
+                    else if(GRA.plansza_do_gry[x][y].zwrocTyp() == CZARNY_DAMA)
                         window.draw(tekstury.spriteDamyCzarny);
-                    else if(GRA.zwrocPole(x,y).zwrocTyp() == BIALY_DAMA)
+                    else if(GRA.plansza_do_gry[x][y].zwrocTyp() == BIALY_DAMA)
                         window.draw(tekstury.spriteDamyBialy);
 
                     if(x == 7 && y == 7) {
