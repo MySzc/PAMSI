@@ -5,6 +5,7 @@
 #include "gra.h"
 #include <iostream>
 
+/*
 turaGry graWarcaby::zwrocTure(typPionka typ) {
 
     if(typ == BIALY || typ == BIALY_DAMA)
@@ -31,8 +32,8 @@ void graWarcaby::odznaczWszystkiePozaJednym(int x, int y) {
     this->odznaczWszystkie();
     this->planszaDoGry.zwrocPole(x,y).zaznaczPionka();
 
-    /*
-     * this->planszaDoGry.zwrocPole(y,x).zaznaczPionka();
+
+    this->planszaDoGry.zwrocPole(y,x).zaznaczPionka();
     std::cout << "Zaznaczono pionek: " << x << " " << y << std::endl;
 
     for (int i = 0; i < WIELKOSC_PLANSZY; ++i) {
@@ -47,7 +48,7 @@ void graWarcaby::odznaczWszystkiePozaJednym(int x, int y) {
 
         }
     }
-     */
+
 
 }
 
@@ -116,7 +117,7 @@ bool graWarcaby::czyCosJestZaznaczone() {
 
 
 
-
+*/
 
 
 

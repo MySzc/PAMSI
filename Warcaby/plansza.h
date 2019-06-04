@@ -11,15 +11,15 @@
 
 
 class Pole{
-private:
+public:
 
     typPionka Typ;
     bool zaznacz;
-    kierunkiRuchu kierunki[4];
+    kierunkiRuchu kierunki[ILOSC_RUCHOW];
 
-public:
 
-    Pole()= default;
+
+    Pole();
 
     void ustawTyp(typPionka typ);
     typPionka zwrocTyp();
@@ -44,23 +44,29 @@ public:
 
 
 class Plansza{
-private:
+public:
 
     Pole plansza_do_gry[WIELKOSC_PLANSZY][WIELKOSC_PLANSZY];
 
-public:
 
-    Plansza()= default;
+
+    Plansza();
 
     Pole zwrocPole(int x,int y);
 
     void inicjalizujPlansze();
     void inicjalizujPlanszeStart();
 
+    int ileBialychPionkow();
+    int ileCzarnychPionkow();
+
     void wyswietlPlanszeTerminal();
 
-    void ruchPionka(int start_x, int start_y, int end_x, int end_y);
+    void ruchPionkaKoordynaty(int start_x, int start_y, int end_x, int end_y);
+    void ruchPionkaZaznaczenie(int end_x, int end_y);
 
+    void odznaczWszystkie();
+    bool czyCosJestZaznaczone();
 };
 
 

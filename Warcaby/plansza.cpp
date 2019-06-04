@@ -8,6 +8,17 @@
 #include <cmath>
 
 
+Pole::Pole() {
+
+    this->ustawTyp(PUSTE);
+
+    this->odznaczPionka();
+
+    for (int indeks = 0; indeks < ILOSC_RUCHOW; ++indeks) {
+        this->ustawBrakRuchu(0);
+    }
+}
+
 void Pole::ustawTyp(typPionka typ) {
 
     this->Typ = typ;
@@ -91,7 +102,25 @@ void Pole::ustawBrakRuchu(int indeks) {
 
 
 
+Plansza::Plansza() {
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if( ((y%2 == 0) && (x%2 ==0)) || ((y%2 != 0) && (x%2 != 0)))
+                this->zwrocPole(x,y).ustawTyp(NIEDOZWOLONE_POLE);
+            else if ( ( ((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y < 3) )
+                this->zwrocPole(x,y).ustawTyp(CZARNY);
+            else if ( (((x%2 != 0) && (y%2 ==0)) || ((x%2 == 0) && (y%2 != 0)) ) && (y > 4) )
+                this->zwrocPole(x,y).ustawTyp(BIALY);
+        }
+    }
+
+}
+
+
 Pole Plansza::zwrocPole(int x, int y) {
+
     return this->plansza_do_gry[x][y];
 }
 
@@ -156,11 +185,82 @@ void Plansza::wyswietlPlanszeTerminal() {
 }
 
 
-void Plansza::ruchPionka(int start_x, int start_y, int end_x, int end_y) {
+void Plansza::ruchPionkaKoordynaty(int start_x, int start_y, int end_x, int end_y) {
 
     this->zwrocPole(end_x,end_y).ustawTyp( this->zwrocPole(start_x,start_y).zwrocTyp() );
 
     this->zwrocPole(start_x,start_y).ustawTyp(PUSTE);
 
 }
+
+void Plansza::ruchPionkaZaznaczenie(int end_x, int end_y) {
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+           if(this->zwrocPole(x,y).czyZaznaczonyPionek())
+               this->ruchPionkaKoordynaty(x,y,end_x,end_y);
+
+        }
+    }
+}
+
+
+void Plansza::odznaczWszystkie() {
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            this->zwrocPole(x,y).odznaczPionka();
+        }
+    }
+}
+
+bool Plansza::czyCosJestZaznaczone() {
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->zwrocPole(x,y).czyZaznaczonyPionek())
+                return true;
+        }
+    }
+
+    return false;
+}
+
+int Plansza::ileBialychPionkow() {
+
+    int licznik = 0;
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->zwrocPole(x,y).zwrocTyp() == BIALY || this->zwrocPole(x,y).zwrocTyp() == BIALY_DAMA)
+                licznik++;
+        }
+    }
+
+    return licznik;
+}
+
+int Plansza::ileCzarnychPionkow() {
+
+    int licznik = 0;
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->zwrocPole(x,y).zwrocTyp() == CZARNY || this->zwrocPole(x,y).zwrocTyp() == CZARNY_DAMA)
+                licznik++;
+        }
+    }
+
+    return licznik;
+}
+
+
+
+
+
 

@@ -11,7 +11,7 @@
 #include "usprawnienia.h"
 #include <SFML/Graphics.hpp>
 
-
+/*
 class graWarcaby{
 public:
 
@@ -39,6 +39,6 @@ public:
 
 
 };
-
+*/
 
 #endif //WARCABY_GRA_H

@@ -10,18 +10,14 @@
 
 int main() {
 
+    Plansza GRA;
+    akcesoriaGry tekstury;
 
+    GRA.inicjalizujPlanszeStart();
 
-
-/*
-    graWarcaby GRA;
-
-    GRA.planszaDoGry.inicjalizujPlanszeStart();
-
-    GRA.akcesoriaDoGry.setTeksturaPlanszy("board.png");
-    GRA.akcesoriaDoGry.setTeksturaDamy("bialyKrolowa.png","czarnyKrolowa.png");
-    GRA.akcesoriaDoGry.setTeksturaPionka("bialyPionek.png", "czarnyPionek.png");
-
+    tekstury.setTeksturaPlanszy("board.png");
+    tekstury.setTeksturaDamy("bialyKrolowa.png","czarnyKrolowa.png");
+    tekstury.setTeksturaPionka("bialyPionek.png", "czarnyPionek.png");
 
     sf::RenderWindow window(sf::VideoMode(8*WIELKOSC_POLA,8*WIELKOSC_POLA,32),"Warcaby");
 
@@ -40,12 +36,14 @@ int main() {
 
                 mysz = sf::Mouse::getPosition( window );
 
-                if (GRA.planszaDoGry.zwrocPole(mysz.y/100,mysz.x/100).retTyp() != PUSTE ||
-                    GRA.planszaDoGry.zwrocPole(mysz.y/100,mysz.x/100).retTyp() != NIEDOZWOLONE_POLE){
+                if ( ((GRA.zwrocPole(mysz.x/100,mysz.y/100).zwrocTyp() != PUSTE) ||
+                     (GRA.zwrocPole(mysz.x/100,mysz.y/100).zwrocTyp() != NIEDOZWOLONE_POLE)) &&
+                      !GRA.czyCosJestZaznaczone() ){
 
-                    std::cout << "L " << mysz.y/100 << " ; " << mysz.x/100<< std::endl;
+                    std::cout << "L " << mysz.x/100 << " ; " << mysz.y/100<< std::endl;
 
-                    GRA.odznaczWszystkiePozaJednym(mysz.y/100, mysz.x/100);
+                    GRA.odznaczWszystkie();
+                    GRA.zwrocPole(mysz.x/100, mysz.y/100).zaznaczPionka();
                 }
             }
 
@@ -56,11 +54,12 @@ int main() {
 
                 mysz = sf::Mouse::getPosition( window );
 
-                if (GRA.planszaDoGry.zwrocPole(mysz.y/100,mysz.x/100).retTyp() == PUSTE){
+                if (GRA.zwrocPole(mysz.x/100,mysz.y/100).zwrocTyp() == PUSTE &&
+                    GRA.czyCosJestZaznaczone() ){
 
-                    std::cout << "P " << mysz.y/100 << " ; " << mysz.x/100<< std::endl;
+                    std::cout << "P " << mysz.x/100 << " ; " << mysz.y/100<< std::endl;
 
-                    GRA.planszaDoGry.ruchPionka(GRA.zwrocZaznaczoneX(), GRA.zwrocZaznaczoneY(),  mysz.y/100, mysz.x/100);
+                    GRA.ruchPionkaZaznaczenie(mysz.y/100, mysz.x/100);
 
                     GRA.odznaczWszystkie();
                 }
@@ -69,29 +68,29 @@ int main() {
 
 
 
-            window.draw(GRA.akcesoriaDoGry.spritePlanszy);
+            window.draw(tekstury.spritePlanszy);
 
-            for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
-                for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+            for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+                for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-                    GRA.akcesoriaDoGry.spritePionkaBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-                    GRA.akcesoriaDoGry.spritePionkaCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-                    GRA.akcesoriaDoGry.spriteDamyBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-                    GRA.akcesoriaDoGry.spriteDamyCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                    tekstury.spritePionkaBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                    tekstury.spritePionkaCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                    tekstury.spriteDamyBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                    tekstury.spriteDamyCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
 
-                    if(GRA.planszaDoGry.zwrocTypPionka(x,y) == BIALY)
-                        window.draw(GRA.akcesoriaDoGry.spritePionkaBialy);
-                    else if(GRA.planszaDoGry.zwrocTypPionka(x,y) == CZARNY)
-                        window.draw(GRA.akcesoriaDoGry.spritePionkaCzarny);
-                    else if(GRA.planszaDoGry.zwrocTypPionka(x,y) == CZARNY_DAMA)
-                        window.draw(GRA.akcesoriaDoGry.spriteDamyCzarny);
-                    else if(GRA.planszaDoGry.zwrocTypPionka(x,y) == BIALY_DAMA)
-                        window.draw(GRA.akcesoriaDoGry.spriteDamyBialy);
+                    if(GRA.zwrocPole(x,y).zwrocTyp() == BIALY)
+                        window.draw(tekstury.spritePionkaBialy);
+                    else if(GRA.zwrocPole(x,y).zwrocTyp() == CZARNY)
+                        window.draw(tekstury.spritePionkaCzarny);
+                    else if(GRA.zwrocPole(x,y).zwrocTyp() == CZARNY_DAMA)
+                        window.draw(tekstury.spriteDamyCzarny);
+                    else if(GRA.zwrocPole(x,y).zwrocTyp() == BIALY_DAMA)
+                        window.draw(tekstury.spriteDamyBialy);
 
-                    //if(x == 7 && y == 7) {
-                     //   std::cout << "********************************************" << std::endl;
-                     //   GRA.planszaDoGry.wyswietlPlansze();
-                   // }
+                    if(x == 7 && y == 7) {
+                        std::cout << "********************************************" << std::endl;
+                        GRA.wyswietlPlanszeTerminal();
+                    }
                 }
             }
 
@@ -100,7 +99,7 @@ int main() {
 
     }
 
-*/
+
 
 /*
    Plansza test;
