@@ -25,9 +25,9 @@ int kierunekZbityPionka_X(int end_x, kierunkiRuchu kier) {
         case GORA_LEWO:
             return end_x + 1;
         case GORA_PRAWO:
-            return end_x + 1;
-        case DOL_LEWO:
             return end_x - 1;
+        case DOL_LEWO:
+            return end_x + 1;
         case DOL_PRAWO:
             return end_x - 1;
         default:
@@ -41,9 +41,9 @@ int kierunekZbityPionka_Y(int end_y, kierunkiRuchu kier) {
         case GORA_LEWO:
             return end_y + 1;
         case GORA_PRAWO:
-            return end_y - 1;
-        case DOL_LEWO:
             return end_y + 1;
+        case DOL_LEWO:
+            return end_y - 1;
         case DOL_PRAWO:
             return end_y - 1;
         default:

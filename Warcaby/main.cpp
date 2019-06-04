@@ -15,6 +15,9 @@ int main() {
 
     GRA.inicjalizujPlanszeStart();
 
+    GRA.ruchPionkaKoordynaty(2,1,4,1);
+    GRA.ruchPionkaKoordynaty(2,5,4,5);
+
     tekstury.setTeksturaPlanszy("board.png");
     tekstury.setTeksturaDamy("bialyKrolowa.png","czarnyKrolowa.png");
     tekstury.setTeksturaPionka("bialyPionek.png", "czarnyPionek.png");
@@ -34,9 +37,9 @@ int main() {
 
 
                 if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-
                     mysz = sf::Mouse::getPosition(window);
-
+                    GRA.odznaczWszystkie();
+                }
                     //if (((GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() != PUSTE) ||
                      //    (GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() != NIEDOZWOLONE_POLE)) &&
                      //   !GRA.czyCosJestZaznaczone()) {
@@ -48,7 +51,7 @@ int main() {
                         GRA.odznaczWszystkie();
                         GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zaznaczPionka();
                     }
-                }
+
 
                 if (GRA.czyCosJestZaznaczone())
                     std::cout << "Cos jest zaznaczone" << std::endl;
@@ -58,11 +61,16 @@ int main() {
                     mysz = sf::Mouse::getPosition(window);
 
                     if (GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() == PUSTE &&
-                        GRA.czyCosJestZaznaczone() && GRA.czyRuchJestDozwolonyGracz(mysz.x / 100,mysz.y / 100)) {
+                        GRA.czyCosJestZaznaczone()){
+
+                        if( GRA.czyRuchJestDozwolonyGracz(mysz.x / 100,mysz.y / 100) )
+                            GRA.ruchPionkaZaznaczenie(mysz.x / 100, mysz.y / 100);
+
+                        if( GRA.czyBicieJestDozwoloneGracz(mysz.x / 100,mysz.y / 100) )
+                            GRA.biciePionkaZaznaczenie(mysz.x / 100, mysz.y / 100);
 
                         std::cout << "P " << mysz.y / 100 << " ; " << mysz.x / 100 << std::endl;
 
-                        GRA.ruchPionkaZaznaczenie(mysz.x / 100, mysz.y / 100);
 
                         GRA.odznaczWszystkie();
                     }

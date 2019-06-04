@@ -190,6 +190,36 @@ void Plansza::ruchPionkaZaznaczenie(int end_x, int end_y) {
     }
 }
 
+void Plansza::biciePionkaKoordynaty(int start_x, int start_y, int end_x, int end_y) {
+
+    kierunkiRuchu kier;
+    int bity_x=0, bity_y=0;
+
+    this->plansza_do_gry[end_x][end_y].ustawTyp( this->plansza_do_gry[start_x][start_y].zwrocTyp() );
+
+    this->plansza_do_gry[start_x][start_y].ustawTyp(PUSTE);
+
+    kier = sprawdzKierunekRuchu(start_x,start_y,end_x,end_y);
+    bity_x = kierunekZbityPionka_X(end_y, kier);
+    bity_y = kierunekZbityPionka_Y(end_x, kier);
+
+    this->plansza_do_gry[bity_y][bity_x].ustawTyp(PUSTE);
+
+}
+
+
+void Plansza::biciePionkaZaznaczenie(int end_x, int end_y) {
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->plansza_do_gry[y][x].czyZaznaczonyPionek())
+                this->biciePionkaKoordynaty(y,x,end_y,end_x);
+
+        }
+    }
+}
+
 
 void Plansza::odznaczWszystkie() {
 
@@ -289,18 +319,21 @@ bool Plansza::czyBicieJestDozwoloneGracz(int end_x, int end_y) {
         }
     }
 
-    if( (((abs(end_x - start_x) == abs(end_y - start_y)) && (abs(end_y - start_y) == 2))  && (plansza_do_gry[start_y][start_x].zwrocTyp() == BIALY) )){
+    if( (((abs(end_y - start_x) == abs(end_x - start_y)) && (abs(end_y - start_x) == 2))  && (plansza_do_gry[start_x][start_y].zwrocTyp() == BIALY) )){
 
-        kier = sprawdzKierunekRuchu(start_x,start_y,end_x,end_y);
+        kier = sprawdzKierunekRuchu(start_x,start_y,end_y,end_x);
 
         bity_x = kierunekZbityPionka_X(end_x, kier);
         bity_y = kierunekZbityPionka_Y(end_y, kier);
 
-        return (plansza_do_gry[bity_y][bity_x].zwrocTyp() == CZARNY || plansza_do_gry[bity_y][bity_x].zwrocTyp() == CZARNY_DAMA);
+        return (plansza_do_gry[bity_y][bity_x].zwrocTyp() == CZARNY || plansza_do_gry[bity_x][bity_y].zwrocTyp() == CZARNY_DAMA);
     };
 
     return false;
 }
+
+
+
 
 
 

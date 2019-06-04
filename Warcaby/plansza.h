@@ -63,6 +63,8 @@ public:
 
     void ruchPionkaKoordynaty(int start_x, int start_y, int end_x, int end_y);
     void ruchPionkaZaznaczenie(int end_x, int end_y);
+    void biciePionkaKoordynaty(int start_x, int start_y, int end_x, int end_y);
+    void biciePionkaZaznaczenie(int end_x,int end_y);
 
     void odznaczWszystkie();
     bool czyCosJestZaznaczone();
