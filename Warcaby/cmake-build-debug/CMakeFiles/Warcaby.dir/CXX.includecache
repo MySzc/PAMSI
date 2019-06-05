@@ -676,6 +676,16 @@ SFML/Config.hpp
 
 ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 
+/home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.cpp
+akcesoriaDoGry.h
+/home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.h
+wielkosci.h
+/home/msz/Desktop/PAMSI/Warcaby/wielkosci.h
+usprawnienia.h
+/home/msz/Desktop/PAMSI/Warcaby/usprawnienia.h
+SFML/Graphics.hpp
+-
+
 /home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.h
 wielkosci.h
 /home/msz/Desktop/PAMSI/Warcaby/wielkosci.h
@@ -730,6 +740,10 @@ wielkosci.h
 iostream
 -
 cmath
+-
+cstdlib
+-
+ctime
 -
 
 /home/msz/Desktop/PAMSI/Warcaby/plansza.h

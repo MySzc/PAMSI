@@ -7,5 +7,6 @@
 
 #define WIELKOSC_PLANSZY 8
 #define WIELKOSC_POLA 100
+#define ILOSC_RUCHOW 4
 
 #endif //WARCABY_WIELKOSCI_H

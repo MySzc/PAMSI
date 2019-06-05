@@ -10,22 +10,20 @@
 
 int main() {
 
+    Plansza GRA;
+    akcesoriaGry tekstury;
 
+    GRA.inicjalizujPlanszeStart();
 
-
-/*
-    graWarcaby GRA;
-
-    GRA.planszaDoGry.inicjalizujPlanszeStart();
-
-    GRA.akcesoriaDoGry.setTeksturaPlanszy("board.png");
-    GRA.akcesoriaDoGry.setTeksturaDamy("bialyKrolowa.png","czarnyKrolowa.png");
-    GRA.akcesoriaDoGry.setTeksturaPionka("bialyPionek.png", "czarnyPionek.png");
-
+    tekstury.setTeksturaPlanszy("board.png");
+    tekstury.setTeksturaDamy("bialyKrolowa.png","czarnyKrolowa.png");
+    tekstury.setTeksturaPionka("bialyPionek.png", "czarnyPionek.png");
 
     sf::RenderWindow window(sf::VideoMode(8*WIELKOSC_POLA,8*WIELKOSC_POLA,32),"Warcaby");
 
     sf::Vector2i mysz;
+    kierunkiRuchu kierunek_pomocniczy;
+    turaGry TURA = TURA_BIALE;
 
     while(window.isOpen()) {
         sf::Event event{};
@@ -36,141 +34,109 @@ int main() {
                 window.close();
             }
 
-            if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left ){
+            GRA.wypelnijMozliweKierunkiRuch();
 
-                mysz = sf::Mouse::getPosition( window );
 
-                if (GRA.planszaDoGry.zwrocPole(mysz.y/100,mysz.x/100).retTyp() != PUSTE ||
-                    GRA.planszaDoGry.zwrocPole(mysz.y/100,mysz.x/100).retTyp() != NIEDOZWOLONE_POLE){
+            if(TURA == TURA_BIALE && GRA.ileBialychPionkow() != 0) {
 
-                    std::cout << "L " << mysz.y/100 << " ; " << mysz.x/100<< std::endl;
+                std::cout << "TURA BIALE" << std::endl;
 
-                    GRA.odznaczWszystkiePozaJednym(mysz.y/100, mysz.x/100);
-                }
-            }
-
-            if(GRA.czyCosJestZaznaczone())
-                std::cout<< "Cos jest zaznaczone" <<std::endl;
-
-            if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Right ){
-
-                mysz = sf::Mouse::getPosition( window );
-
-                if (GRA.planszaDoGry.zwrocPole(mysz.y/100,mysz.x/100).retTyp() == PUSTE){
-
-                    std::cout << "P " << mysz.y/100 << " ; " << mysz.x/100<< std::endl;
-
-                    GRA.planszaDoGry.ruchPionka(GRA.zwrocZaznaczoneX(), GRA.zwrocZaznaczoneY(),  mysz.y/100, mysz.x/100);
-
+                if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                    mysz = sf::Mouse::getPosition(window);
                     GRA.odznaczWszystkie();
                 }
+
+                if ((GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() == BIALY) &&
+                    !GRA.czyCosJestZaznaczone()) {
+
+                    GRA.odznaczWszystkie();
+                    GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zaznaczPionka();
+                }
+
+
+                if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Right) {
+
+                    mysz = sf::Mouse::getPosition(window);
+
+                    if (GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() == PUSTE &&
+                        GRA.czyCosJestZaznaczone()) {
+
+                        kierunek_pomocniczy = sprawdzKierunekRuchu(GRA.zwrocZaznaczoneY(), GRA.zwrocZaznaczoneX(),
+                                                                   mysz.y / 100, mysz.x / 100);
+
+                        if (GRA.czyRuchJestDozwolonyGracz(mysz.x / 100, mysz.y / 100) &&
+                            GRA.czyJestKierunekNaLiscie(GRA.zwrocZaznaczoneX(), GRA.zwrocZaznaczoneY(),
+                                                        kierunek_pomocniczy)) {
+
+                            GRA.ruchPionkaZaznaczenie(mysz.x / 100, mysz.y / 100);
+                            TURA = TURA_CZARNE;
+                        }
+                        if (GRA.czyBicieJestDozwoloneGracz(mysz.x / 100, mysz.y / 100) &&
+                            GRA.czyJestKierunekNaLiscie(GRA.zwrocZaznaczoneX(), GRA.zwrocZaznaczoneY(),
+                                                        kierunek_pomocniczy)) {
+
+                            GRA.biciePionkaZaznaczenie(mysz.x / 100, mysz.y / 100);
+                            TURA = TURA_CZARNE;
+                        }
+
+                        GRA.odznaczWszystkie();
+                    }
+                }
+            }
+
+            if(TURA == TURA_CZARNE && GRA.ileCzarnychPionkow() != 0){
+                std::cout << "TURA CZARNE" << std::endl;
+
+                GRA.losowyRuchCzarny();
+
+                TURA = TURA_BIALE;
             }
 
 
 
 
-            window.draw(GRA.akcesoriaDoGry.spritePlanszy);
 
-            for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
-                for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
 
-                    GRA.akcesoriaDoGry.spritePionkaBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-                    GRA.akcesoriaDoGry.spritePionkaCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-                    GRA.akcesoriaDoGry.spriteDamyBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-                    GRA.akcesoriaDoGry.spriteDamyCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
 
-                    if(GRA.planszaDoGry.zwrocTypPionka(x,y) == BIALY)
-                        window.draw(GRA.akcesoriaDoGry.spritePionkaBialy);
-                    else if(GRA.planszaDoGry.zwrocTypPionka(x,y) == CZARNY)
-                        window.draw(GRA.akcesoriaDoGry.spritePionkaCzarny);
-                    else if(GRA.planszaDoGry.zwrocTypPionka(x,y) == CZARNY_DAMA)
-                        window.draw(GRA.akcesoriaDoGry.spriteDamyCzarny);
-                    else if(GRA.planszaDoGry.zwrocTypPionka(x,y) == BIALY_DAMA)
-                        window.draw(GRA.akcesoriaDoGry.spriteDamyBialy);
 
-                    //if(x == 7 && y == 7) {
-                     //   std::cout << "********************************************" << std::endl;
-                     //   GRA.planszaDoGry.wyswietlPlansze();
-                   // }
+
+
+
+
+
+
+
+
+            }
+
+            window.draw(tekstury.spritePlanszy);
+
+            for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+                for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+                    tekstury.spritePionkaBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                    tekstury.spritePionkaCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                    tekstury.spriteDamyBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                    tekstury.spriteDamyCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+
+                    if(GRA.plansza_do_gry[x][y].zwrocTyp() == BIALY)
+                        window.draw(tekstury.spritePionkaBialy);
+                    else if(GRA.plansza_do_gry[x][y].zwrocTyp() == CZARNY)
+                        window.draw(tekstury.spritePionkaCzarny);
+                    else if(GRA.plansza_do_gry[x][y].zwrocTyp() == CZARNY_DAMA)
+                        window.draw(tekstury.spriteDamyCzarny);
+                    else if(GRA.plansza_do_gry[x][y].zwrocTyp() == BIALY_DAMA)
+                        window.draw(tekstury.spriteDamyBialy);
+
+                    if(x == 7 && y == 7) {
+                        std::cout << "********************************************" << std::endl;
+                        GRA.wyswietlPlanszeTerminal();
+                    }
                 }
             }
 
             window.display();
         }
 
-    }
-
-*/
-
-/*
-   Plansza test;
-
-   test.inicjalizujPlanszeStart();
-   test.wyswietlPlansze();
-
-    test.ruchPionka(5,2,4,3);
-
-    std::cout << "****************************************************************" << std::endl;
-
-    test.wyswietlPlansze();
-
-    test.ruchPionka(2,5,3,4);
-
-    std::cout << "****************************************************************" << std::endl;
-
-    test.wyswietlPlansze();
-
-    test.biciePionka(4,3,2,5);
-
-    std::cout << "****************************************************************" << std::endl;
-
-    test.wyswietlPlansze();
-
-
-
-    sf::RenderWindow window(sf::VideoMode(sf::VideoMode::getDesktopMode()),"Hello SFML");
-
-
-
-    sf::Font font;
-
-    font.loadFromFile("OpenSans-Bold.ttf");
-
-
-    sf::Text text("Hello World",font,11);
-
-    text.setCharacterSize(32);
-
-    text.setPosition(window.getSize().x/2 - text.getGlobalBounds().width/2,
-
-                     window.getSize().y/2 - text.getGlobalBounds().height/2);
-
-
-
-    while(window.isOpen()){
-
-
-
-        sf::Event event;
-
-        while(window.pollEvent(event)) {
-
-            if(event.type == sf::Event::Closed){
-
-                window.close();
-
-            }
-
-            window.clear(sf::Color::Black);
-
-            window.draw(text);
-
-            window.display();
-
-        }
-
-    }
-
-    return 0;
-*/
 }
+
