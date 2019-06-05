@@ -11,25 +11,22 @@
 
 
 class Pole{
-private:
+public:
 
     typPionka Typ;
     bool zaznacz;
-    kierunkiRuchu kierunki[4];
+    kierunkiRuchu kierunki[ILOSC_RUCHOW];
 
-public:
 
-    Pole()= default;
+    Pole();
 
     void ustawTyp(typPionka typ);
     typPionka zwrocTyp();
 
     bool czyPuste();
     bool czyNiedozwolonePole();
-    bool czyBialyPionek();
-    bool czyCzarnyPionek();
-    bool czyBialyDama();
-    bool czyCzarnyDama();
+    bool czyBialy();
+    bool czyCzarny();
 
     void ustawKierunekGL();
     void ustawKierunekGP();
@@ -44,22 +41,43 @@ public:
 
 
 class Plansza{
-private:
+public:
 
     Pole plansza_do_gry[WIELKOSC_PLANSZY][WIELKOSC_PLANSZY];
 
-public:
+
 
     Plansza()= default;
 
-    Pole zwrocPole(int x,int y);
+    //Pole zwrocPole(int x,int y);
 
     void inicjalizujPlansze();
     void inicjalizujPlanszeStart();
 
+    int ileBialychPionkow();
+    int ileCzarnychPionkow();
+
     void wyswietlPlanszeTerminal();
 
-    void ruchPionka(int start_x, int start_y, int end_x, int end_y);
+    void ruchPionkaKoordynaty(int start_x, int start_y, int end_x, int end_y);
+    void ruchPionkaZaznaczenie(int end_x, int end_y);
+    void biciePionkaKoordynaty(int start_x, int start_y, int end_x, int end_y);
+    void biciePionkaZaznaczenie(int end_x,int end_y);
+
+    void odznaczWszystkie();
+    bool czyCosJestZaznaczone();
+
+    bool czyRuchJestDozwolonyGracz(int end_x, int end_y);
+    bool czyBicieJestDozwoloneGracz(int end_x, int end_y);
+
+    void wypelnijMozliweKierunkiRuch();
+
+    bool czyJestKierunekNaLiscie(int x, int y, kierunkiRuchu kier);
+
+    int zwrocZaznaczoneX();
+    int zwrocZaznaczoneY();
+
+    void losowyRuchCzarny();
 
 };
 

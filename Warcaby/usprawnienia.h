@@ -15,6 +15,9 @@ enum typPionka{
     NIEDOZWOLONE_POLE,
 };
 
+bool czyTenSamKolor(typPionka typ1, typPionka typ2);
+bool czyPrzeciwnyKolor(typPionka typ1, typPionka typ2);
+
 enum kierunkiRuchu{
 
     GORA_LEWO,
