@@ -6,6 +6,8 @@
 #include "wielkosci.h"
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 
 Pole::Pole() {
@@ -55,25 +57,16 @@ bool Pole::czyNiedozwolonePole() {
     return this->zwrocTyp() == NIEDOZWOLONE_POLE;
 }
 
-bool Pole::czyBialyPionek() {
+bool Pole::czyBialy() {
 
-    return this->zwrocTyp() == BIALY;
+    return (this->zwrocTyp() == BIALY || this->zwrocTyp() == BIALY_DAMA);
 }
 
-bool Pole::czyCzarnyPionek() {
+bool Pole::czyCzarny() {
 
-    return this->zwrocTyp() == CZARNY;
+    return (this->zwrocTyp() == CZARNY || this->zwrocTyp() == CZARNY_DAMA);
 }
 
-bool Pole::czyBialyDama() {
-
-    return this->zwrocTyp() == BIALY_DAMA;
-}
-
-bool Pole::czyCzarnyDama() {
-
-    return this->zwrocTyp() == CZARNY_DAMA;
-}
 
 void Pole::ustawKierunekGL() {
 
@@ -99,7 +92,6 @@ void Pole::ustawBrakRuchu(int indeks) {
 
     this->kierunki[indeks] = BRAK_RUCHU;
 }
-
 
 
 /*
@@ -244,6 +236,32 @@ bool Plansza::czyCosJestZaznaczone() {
     return false;
 }
 
+
+int Plansza::zwrocZaznaczoneX() {
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->plansza_do_gry[y][x].czyZaznaczonyPionek())
+                return x;
+        }
+    }
+    return 0;
+}
+
+int Plansza::zwrocZaznaczoneY() {
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->plansza_do_gry[y][x].czyZaznaczonyPionek())
+                return y;
+        }
+    }
+    return 0;
+}
+
+
 int Plansza::ileBialychPionkow() {
 
     int licznik = 0;
@@ -331,6 +349,253 @@ bool Plansza::czyBicieJestDozwoloneGracz(int end_x, int end_y) {
 
     return false;
 }
+
+void Plansza::wypelnijMozliweKierunkiRuch() {
+
+    int tmp_x = 0, tmp_y = 0;
+    int tmp_x_2 =0, tmp_y_2;
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+
+            if(this->plansza_do_gry[y][x].zwrocTyp() != PUSTE && this->plansza_do_gry[y][x].zwrocTyp() != NIEDOZWOLONE_POLE) {
+
+                //RUCH GORA LEWO
+                tmp_x = x - 1;
+                tmp_y = y - 1;
+
+                if (tmp_x < 0 || tmp_y < 0 || tmp_x > 7 || tmp_y > 7) {
+                    this->plansza_do_gry[y][x].ustawBrakRuchu(0);
+                } else {
+
+                    if (czyTenSamKolor(this->plansza_do_gry[y][x].zwrocTyp(), this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp()) )
+                        this->plansza_do_gry[y][x].ustawBrakRuchu(0);
+
+                    else if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                        if(this->plansza_do_gry[y][x].czyBialy())
+                            this->plansza_do_gry[y][x].ustawKierunekGL();
+                        else
+                            this->plansza_do_gry[y][x].ustawBrakRuchu(0);
+
+                    }
+                    else if( czyPrzeciwnyKolor( this->plansza_do_gry[y][x].zwrocTyp(), this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() ) ){
+
+                        tmp_x_2 = tmp_x - 1;
+                        tmp_y_2 = tmp_y - 1;
+
+                        if(tmp_x_2 < 0 || tmp_y_2 < 0 || tmp_x_2 > 7 || tmp_y_2 > 7)
+                            this->plansza_do_gry[y][x].ustawBrakRuchu(0);
+                        else{
+
+                            if(this->plansza_do_gry[tmp_y_2][tmp_x_2].zwrocTyp() == PUSTE)
+                                this->plansza_do_gry[y][x].ustawKierunekGL();
+                        }
+                    }
+                }
+
+                //RUCH GORA PRAWO
+                tmp_x = x + 1;
+                tmp_y = y - 1;
+
+                if (tmp_x < 0 || tmp_y < 0 || tmp_x > 7 || tmp_y > 7) {
+                    this->plansza_do_gry[y][x].ustawBrakRuchu(1);
+                } else {
+
+                    if (czyTenSamKolor(this->plansza_do_gry[y][x].zwrocTyp(), this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp()) )
+                        this->plansza_do_gry[y][x].ustawBrakRuchu(1);
+
+                    else if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                        if(this->plansza_do_gry[y][x].czyBialy())
+                            this->plansza_do_gry[y][x].ustawKierunekGP();
+                        else
+                            this->plansza_do_gry[y][x].ustawBrakRuchu(1);
+
+                    }else if( czyPrzeciwnyKolor( this->plansza_do_gry[y][x].zwrocTyp(), this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() ) ){
+
+                        tmp_x_2 = tmp_x + 1;
+                        tmp_y_2 = tmp_y - 1;
+
+                        if(tmp_x_2 < 0 || tmp_y_2 < 0 || tmp_x_2 > 7 || tmp_y_2 > 7)
+                            this->plansza_do_gry[y][x].ustawBrakRuchu(1);
+                        else{
+
+                            if(this->plansza_do_gry[tmp_y_2][tmp_x_2].zwrocTyp() == PUSTE)
+                                this->plansza_do_gry[y][x].ustawKierunekGP();
+                        }
+                    }
+                }
+
+
+                //RUCH DOL PRAWO
+                tmp_x = x + 1;
+                tmp_y = y + 1;
+
+                if (tmp_x < 0 || tmp_y < 0 || tmp_x > 7 || tmp_y > 7) {
+                    this->plansza_do_gry[y][x].ustawBrakRuchu(2);
+                } else {
+
+                    if (czyTenSamKolor(this->plansza_do_gry[y][x].zwrocTyp(), this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp()) )
+                        this->plansza_do_gry[y][x].ustawBrakRuchu(2);
+
+                    else if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                        if(this->plansza_do_gry[y][x].czyCzarny())
+                            this->plansza_do_gry[y][x].ustawKierunekDP();
+                        else
+                            this->plansza_do_gry[y][x].ustawBrakRuchu(2);
+
+                    }else if( czyPrzeciwnyKolor( this->plansza_do_gry[y][x].zwrocTyp(), this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() ) ){
+
+                        tmp_x_2 = tmp_x + 1;
+                        tmp_y_2 = tmp_y + 1;
+
+                        if(tmp_x_2 < 0 || tmp_y_2 < 0 || tmp_x_2 > 7 || tmp_y_2 > 7)
+                            this->plansza_do_gry[y][x].ustawBrakRuchu(2);
+                        else{
+
+                            if(this->plansza_do_gry[tmp_y_2][tmp_x_2].zwrocTyp() == PUSTE)
+                                this->plansza_do_gry[y][x].ustawKierunekDP();
+                        }
+                    }
+                }
+
+
+                //RUCH DOL LEWO
+                tmp_x = x - 1;
+                tmp_y = y + 1;
+
+                if (tmp_x < 0 || tmp_y < 0 || tmp_x > 7 || tmp_y > 7) {
+                    this->plansza_do_gry[y][x].ustawBrakRuchu(3);
+                } else {
+
+                    if (czyTenSamKolor(this->plansza_do_gry[y][x].zwrocTyp(),
+                                       this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp()))
+                        this->plansza_do_gry[y][x].ustawBrakRuchu(3);
+
+                    else if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                        if(this->plansza_do_gry[y][x].czyCzarny())
+                            this->plansza_do_gry[y][x].ustawKierunekDL();
+                        else
+                            this->plansza_do_gry[y][x].ustawBrakRuchu(3);
+
+                    } else if( czyPrzeciwnyKolor( this->plansza_do_gry[y][x].zwrocTyp(), this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() ) ){
+
+                        tmp_x_2 = tmp_x - 1;
+                        tmp_y_2 = tmp_y + 1;
+
+                        if(tmp_x_2 < 0 || tmp_y_2 < 0 || tmp_x_2 > 7 || tmp_y_2 > 7)
+                            this->plansza_do_gry[y][x].ustawBrakRuchu(3);
+                        else{
+
+                            if(this->plansza_do_gry[tmp_y_2][tmp_x_2].zwrocTyp() == PUSTE)
+                                this->plansza_do_gry[y][x].ustawKierunekDL();
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
+}
+
+bool Plansza::czyJestKierunekNaLiscie(int x, int y, kierunkiRuchu kier) {
+
+    for (int indeks = 0; indeks < ILOSC_RUCHOW ; ++indeks) {
+
+        if (this->plansza_do_gry[y][x].kierunki[indeks] == kier)
+            return true;
+    }
+    return false;
+
+}
+
+void Plansza::losowyRuchCzarny() {
+
+    bool ruch = false;
+    int y, x;
+    int tmp_y, tmp_x;
+
+    srand (time(NULL));
+
+    while(!ruch){
+
+        x = rand() % 8;
+        y = rand() % 8;
+
+        if(this->plansza_do_gry[y][x].czyCzarny()){
+
+            for (int i = 0; i < ILOSC_RUCHOW; ++i) {
+
+                if(this->plansza_do_gry[y][x].kierunki[i] == GORA_LEWO){
+
+                    tmp_y = y - 1;
+                    tmp_x = x - 1;
+
+                    if(this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+                        this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+                        ruch = true;
+                    }
+                    else {
+                        this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x - 1);
+                        ruch = true;
+                    }
+
+                } else if(this->plansza_do_gry[y][x].kierunki[i] == GORA_PRAWO){
+
+                    tmp_y = y - 1;
+                    tmp_x = x + 1;
+
+                    if(this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE){
+
+                        this->ruchPionkaKoordynaty(y,x,tmp_y,tmp_x);
+                        ruch = true;
+                    }
+                    else {
+                        this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x + 1);
+                        ruch = true;
+                    }
+
+                }else if(this->plansza_do_gry[y][x].kierunki[i] == DOL_PRAWO){
+
+                    tmp_y = y + 1;
+                    tmp_x = x + 1;
+
+                    if(this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+                        this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+                        ruch = true;
+                    }
+                    else {
+                        this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x + 1);
+                        ruch = true;
+                    }
+
+                }else if(this->plansza_do_gry[y][x].kierunki[i] == DOL_LEWO){
+
+                    tmp_y = y + 1;
+                    tmp_x = x - 1;
+
+                    if(this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+                        this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+                        ruch = true;
+                    }
+                    else {
+                        this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x - 1);
+                        ruch = true;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+
 
 
 

@@ -25,10 +25,8 @@ public:
 
     bool czyPuste();
     bool czyNiedozwolonePole();
-    bool czyBialyPionek();
-    bool czyCzarnyPionek();
-    bool czyBialyDama();
-    bool czyCzarnyDama();
+    bool czyBialy();
+    bool czyCzarny();
 
     void ustawKierunekGL();
     void ustawKierunekGP();
@@ -71,6 +69,16 @@ public:
 
     bool czyRuchJestDozwolonyGracz(int end_x, int end_y);
     bool czyBicieJestDozwoloneGracz(int end_x, int end_y);
+
+    void wypelnijMozliweKierunkiRuch();
+
+    bool czyJestKierunekNaLiscie(int x, int y, kierunkiRuchu kier);
+
+    int zwrocZaznaczoneX();
+    int zwrocZaznaczoneY();
+
+    void losowyRuchCzarny();
+
 };
 
 
