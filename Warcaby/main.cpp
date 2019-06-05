@@ -25,7 +25,7 @@ int main() {
     kierunkiRuchu kierunek_pomocniczy;
     turaGry TURA = TURA_BIALE;
 
-    while(window.isOpen()) {
+    while(window.isOpen() && (GRA.ileCzarnychPionkow() != 0 || GRA.ileBialychPionkow() )) {
         sf::Event event{};
 
         while (window.pollEvent(event)) {
@@ -37,7 +37,7 @@ int main() {
             GRA.wypelnijMozliweKierunkiRuch();
 
 
-            if(TURA == TURA_BIALE) {
+            if(TURA == TURA_BIALE && GRA.ileBialychPionkow() != 0) {
 
                 std::cout << "TURA BIALE" << std::endl;
 
@@ -84,7 +84,7 @@ int main() {
                 }
             }
 
-            if(TURA == TURA_CZARNE){
+            if(TURA == TURA_CZARNE && GRA.ileCzarnychPionkow() != 0){
                 std::cout << "TURA CZARNE" << std::endl;
 
                 GRA.losowyRuchCzarny();

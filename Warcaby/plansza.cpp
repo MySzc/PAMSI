@@ -312,7 +312,7 @@ bool Plansza::czyRuchJestDozwolonyGracz(int end_x, int end_y) {
         return (abs(end_x - start_x)  == abs(end_y - start_y));
 
     }//RUCH PIONKA
-    else if( ((abs(end_x - start_x) == abs(end_y - start_y)) && (abs(end_y - start_y) == 1)) && (plansza_do_gry[start_y][start_x].zwrocTyp() == BIALY) ) {
+    else if( ((abs(end_x - start_x) == 1) && (abs(end_y - start_y) == 1)) && (plansza_do_gry[start_y][start_x].zwrocTyp() == BIALY) ) {
 
         return true;
 
@@ -337,7 +337,7 @@ bool Plansza::czyBicieJestDozwoloneGracz(int end_x, int end_y) {
         }
     }
 
-    if( (((abs(end_y - start_x) == abs(end_x - start_y)) && (abs(end_y - start_x) == 2))  && (plansza_do_gry[start_x][start_y].zwrocTyp() == BIALY) )){
+    if( ((abs(end_x - start_y) == 2) && (abs(end_y - start_x) == 2))  && (plansza_do_gry[start_x][start_y].zwrocTyp() == BIALY) ){
 
         kier = sprawdzKierunekRuchu(start_x,start_y,end_y,end_x);
 
