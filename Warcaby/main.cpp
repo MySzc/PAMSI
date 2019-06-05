@@ -36,7 +36,6 @@ int main() {
 
             GRA.wypelnijMozliweKierunkiRuch();
 
-
             if(TURA == TURA_BIALE && GRA.ileBialychPionkow() != 0) {
 
                 std::cout << "TURA BIALE" << std::endl;
@@ -83,6 +82,9 @@ int main() {
                     }
                 }
             }
+
+
+            GRA.wypelnijMozliweKierunkiRuch();
 
             if(TURA == TURA_CZARNE && GRA.ileCzarnychPionkow() != 0){
                 std::cout << "TURA CZARNE" << std::endl;

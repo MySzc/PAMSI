@@ -540,7 +540,7 @@ void Plansza::losowyRuchCzarny() {
                         this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
                         ruch = true;
                     }
-                    else {
+                    else if(this->plansza_do_gry[tmp_y -1][tmp_x -1].zwrocTyp() == PUSTE) {
                         this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x - 1);
                         ruch = true;
                     }
@@ -555,7 +555,7 @@ void Plansza::losowyRuchCzarny() {
                         this->ruchPionkaKoordynaty(y,x,tmp_y,tmp_x);
                         ruch = true;
                     }
-                    else {
+                    else if(this->plansza_do_gry[tmp_y -1][tmp_x +1].zwrocTyp() == PUSTE) {
                         this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x + 1);
                         ruch = true;
                     }
@@ -569,7 +569,7 @@ void Plansza::losowyRuchCzarny() {
                         this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
                         ruch = true;
                     }
-                    else {
+                    else if(this->plansza_do_gry[tmp_y +1][tmp_x +1].zwrocTyp() == PUSTE){
                         this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x + 1);
                         ruch = true;
                     }
@@ -583,7 +583,7 @@ void Plansza::losowyRuchCzarny() {
                         this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
                         ruch = true;
                     }
-                    else {
+                    else if(this->plansza_do_gry[tmp_y +1][tmp_x -1].zwrocTyp() == PUSTE){
                         this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x - 1);
                         ruch = true;
                     }
