@@ -5,19 +5,13 @@
 #include "usprawnienia.h"
 #include "akcesoriaDoGry.h"
 #include <iostream>
-#include <utility>
 
 int main() {
 
     Plansza GRA;
     akcesoriaGry tekstury;
 
-   // GRA.inicjalizujPlanszeStart();
-
-    GRA.plansza_do_gry[7][6].ustawTyp(BIALY);
-    GRA.plansza_do_gry[5][6].ustawTyp(BIALY);
-    GRA.plansza_do_gry[6][7].ustawTyp(CZARNY);
-  //  GRA.ruchPionkaKoordynaty(2,1,4,1);
+    GRA.inicjalizujPlanszeStart();
 
     tekstury.setTeksturaPlanszy("board.png");
     tekstury.setTeksturaDamy("bialyKrolowa.png","czarnyKrolowa.png");
@@ -27,9 +21,10 @@ int main() {
 
     sf::Vector2i mysz;
     kierunkiRuchu kierunek_pomocniczy;
+    bool koniec_gry = false;
     turaGry TURA = TURA_BIALE;
 
-    while(window.isOpen()) {
+    while(window.isOpen() && !koniec_gry) {
         sf::Event event{};
 
         while (window.pollEvent(event)) {
@@ -38,11 +33,11 @@ int main() {
                 window.close();
             }
 
+
             GRA.wypelnijMozliweKierunkiRuch();
 
-            if(TURA == TURA_BIALE && GRA.czyMaRuchyBialy()) {
 
-                std::cout << "TURA BIALE" << std::endl;
+            if(TURA == TURA_BIALE && GRA.czyMaRuchyBialy()) {
 
                 if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
                     mysz = sf::Mouse::getPosition(window);
@@ -82,18 +77,21 @@ int main() {
                         GRA.odznaczWszystkie();
                     }
                 }
-            }
+            } else if(TURA == TURA_BIALE)
+                koniec_gry = true;
+
 
 
             GRA.wypelnijMozliweKierunkiRuch();
 
+
             if(TURA == TURA_CZARNE && GRA.czyMaRuchyCzarny()){
-                std::cout << "TURA CZARNE" << std::endl;
 
                 GRA.losowyRuchCzarny();
 
                 TURA = TURA_BIALE;
-            }
+            } else if(TURA == TURA_CZARNE)
+                koniec_gry = true;
 
 
 
@@ -101,45 +99,67 @@ int main() {
 
 
 
-
-
-
-
-
-
-
-
-
-            }
-
-            window.draw(tekstury.spritePlanszy);
-
-            for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
-                for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
-
-                    tekstury.spritePionkaBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-                    tekstury.spritePionkaCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-                    tekstury.spriteDamyBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-                    tekstury.spriteDamyCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
-
-                    if(GRA.plansza_do_gry[x][y].zwrocTyp() == BIALY)
-                        window.draw(tekstury.spritePionkaBialy);
-                    else if(GRA.plansza_do_gry[x][y].zwrocTyp() == CZARNY)
-                        window.draw(tekstury.spritePionkaCzarny);
-                    else if(GRA.plansza_do_gry[x][y].zwrocTyp() == CZARNY_DAMA)
-                        window.draw(tekstury.spriteDamyCzarny);
-                    else if(GRA.plansza_do_gry[x][y].zwrocTyp() == BIALY_DAMA)
-                        window.draw(tekstury.spriteDamyBialy);
-
-                    if(x == 7 && y == 7) {
-                        std::cout << "********************************************" << std::endl;
-                        GRA.wyswietlPlanszeTerminal();
-                    }
-                }
-            }
-
-            window.display();
         }
 
+        window.draw(tekstury.spritePlanszy);
+
+        for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+            for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+                tekstury.spritePionkaBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                tekstury.spritePionkaCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                tekstury.spriteDamyBialy.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+                tekstury.spriteDamyCzarny.setPosition(y*WIELKOSC_POLA,x*WIELKOSC_POLA);
+
+                if(GRA.plansza_do_gry[x][y].zwrocTyp() == BIALY)
+                    window.draw(tekstury.spritePionkaBialy);
+                else if(GRA.plansza_do_gry[x][y].zwrocTyp() == CZARNY)
+                    window.draw(tekstury.spritePionkaCzarny);
+                else if(GRA.plansza_do_gry[x][y].zwrocTyp() == CZARNY_DAMA)
+                    window.draw(tekstury.spriteDamyCzarny);
+                else if(GRA.plansza_do_gry[x][y].zwrocTyp() == BIALY_DAMA)
+                    window.draw(tekstury.spriteDamyBialy);
+
+                //if(x == 7 && y == 7) {
+                //    std::cout << "********************************************" << std::endl;
+                //    GRA.wyswietlPlanszeTerminal();
+                //}
+            }
+        }
+
+        window.display();
+    }
+
+    while(window.isOpen()) {
+        sf::Event event{};
+
+        while (window.pollEvent(event)) {
+
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+
+            if (!GRA.czyMaRuchyCzarny() && !GRA.czyMaRuchyBialy() && window.isOpen()) {
+
+                tekstury.setTeksturaPlanszy("remis.png");
+                window.draw(tekstury.spritePlanszy);
+
+            } else if (TURA == TURA_BIALE && window.isOpen()) {
+
+                tekstury.setTeksturaPlanszy("wygranaczarne.png");
+                window.draw(tekstury.spritePlanszy);
+
+            } else if (TURA == TURA_CZARNE && window.isOpen()) {
+
+                tekstury.setTeksturaPlanszy("wygranabiale.png");
+                window.draw(tekstury.spritePlanszy);
+            }
+        }
+
+        window.display();
+    }
+
+
+    return 0;
 }
 

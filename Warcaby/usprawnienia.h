@@ -42,4 +42,5 @@ enum turaGry{
 };
 
 
+
 #endif //WARCABY_USPRAWNIENIA_H
