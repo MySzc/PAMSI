@@ -27,6 +27,7 @@ public:
     bool czyNiedozwolonePole();
     bool czyBialy();
     bool czyCzarny();
+    bool czyDama();
 
     void ustawKierunekGL();
     void ustawKierunekGP();
@@ -76,6 +77,9 @@ public:
 
     int zwrocZaznaczoneX();
     int zwrocZaznaczoneY();
+
+    bool czyMaRuchyCzarny();
+    bool czyMaRuchyBialy();
 
     void losowyRuchCzarny();
 

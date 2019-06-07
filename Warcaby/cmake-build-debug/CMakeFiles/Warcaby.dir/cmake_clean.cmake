@@ -3,7 +3,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Warcaby.dir/plansza.cpp.o"
   "CMakeFiles/Warcaby.dir/usprawnienia.cpp.o"
   "CMakeFiles/Warcaby.dir/akcesoriaDoGry.cpp.o"
-  "CMakeFiles/Warcaby.dir/gra.cpp.o"
   "Warcaby.pdb"
   "Warcaby"
 )

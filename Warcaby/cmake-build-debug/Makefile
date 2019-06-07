@@ -150,33 +150,6 @@ akcesoriaDoGry.cpp.s:
 	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/akcesoriaDoGry.cpp.s
 .PHONY : akcesoriaDoGry.cpp.s
 
-gra.o: gra.cpp.o
-
-.PHONY : gra.o
-
-# target to build an object file
-gra.cpp.o:
-	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/gra.cpp.o
-.PHONY : gra.cpp.o
-
-gra.i: gra.cpp.i
-
-.PHONY : gra.i
-
-# target to preprocess a source file
-gra.cpp.i:
-	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/gra.cpp.i
-.PHONY : gra.cpp.i
-
-gra.s: gra.cpp.s
-
-.PHONY : gra.s
-
-# target to generate assembly for a file
-gra.cpp.s:
-	$(MAKE) -f CMakeFiles/Warcaby.dir/build.make CMakeFiles/Warcaby.dir/gra.cpp.s
-.PHONY : gra.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -270,9 +243,6 @@ help:
 	@echo "... akcesoriaDoGry.o"
 	@echo "... akcesoriaDoGry.i"
 	@echo "... akcesoriaDoGry.s"
-	@echo "... gra.o"
-	@echo "... gra.i"
-	@echo "... gra.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

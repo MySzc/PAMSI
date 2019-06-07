@@ -80,7 +80,6 @@ CMakeFiles/Warcaby.dir/akcesoriaDoGry.cpp.o: ../akcesoriaDoGry.h
 CMakeFiles/Warcaby.dir/akcesoriaDoGry.cpp.o: ../usprawnienia.h
 CMakeFiles/Warcaby.dir/akcesoriaDoGry.cpp.o: ../wielkosci.h
 
-
 CMakeFiles/Warcaby.dir/main.cpp.o: ../SFML-2.5.1/include/SFML/Config.hpp
 CMakeFiles/Warcaby.dir/main.cpp.o: ../SFML-2.5.1/include/SFML/Graphics.hpp
 CMakeFiles/Warcaby.dir/main.cpp.o: ../SFML-2.5.1/include/SFML/Graphics/BlendMode.hpp
@@ -156,7 +155,6 @@ CMakeFiles/Warcaby.dir/main.cpp.o: ../SFML-2.5.1/include/SFML/Window/Window.hpp
 CMakeFiles/Warcaby.dir/main.cpp.o: ../SFML-2.5.1/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/Warcaby.dir/main.cpp.o: ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/Warcaby.dir/main.cpp.o: ../akcesoriaDoGry.h
-CMakeFiles/Warcaby.dir/main.cpp.o: ../gra.h
 CMakeFiles/Warcaby.dir/main.cpp.o: ../main.cpp
 CMakeFiles/Warcaby.dir/main.cpp.o: ../plansza.h
 CMakeFiles/Warcaby.dir/main.cpp.o: ../usprawnienia.h

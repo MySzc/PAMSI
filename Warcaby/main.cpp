@@ -4,7 +4,6 @@
 #include "plansza.h"
 #include "usprawnienia.h"
 #include "akcesoriaDoGry.h"
-#include "gra.h"
 #include <iostream>
 #include <utility>
 
@@ -13,7 +12,12 @@ int main() {
     Plansza GRA;
     akcesoriaGry tekstury;
 
-    GRA.inicjalizujPlanszeStart();
+   // GRA.inicjalizujPlanszeStart();
+
+    GRA.plansza_do_gry[7][6].ustawTyp(BIALY);
+    GRA.plansza_do_gry[5][6].ustawTyp(BIALY);
+    GRA.plansza_do_gry[6][7].ustawTyp(CZARNY);
+  //  GRA.ruchPionkaKoordynaty(2,1,4,1);
 
     tekstury.setTeksturaPlanszy("board.png");
     tekstury.setTeksturaDamy("bialyKrolowa.png","czarnyKrolowa.png");
@@ -36,7 +40,7 @@ int main() {
 
             GRA.wypelnijMozliweKierunkiRuch();
 
-            if(TURA == TURA_BIALE && GRA.ileBialychPionkow() != 0) {
+            if(TURA == TURA_BIALE && GRA.czyMaRuchyBialy()) {
 
                 std::cout << "TURA BIALE" << std::endl;
 
@@ -45,7 +49,7 @@ int main() {
                     GRA.odznaczWszystkie();
                 }
 
-                if ((GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() == BIALY) &&
+                if ((GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].czyBialy()) &&
                     !GRA.czyCosJestZaznaczone()) {
 
                     GRA.odznaczWszystkie();
@@ -57,22 +61,19 @@ int main() {
 
                     mysz = sf::Mouse::getPosition(window);
 
-                    if (GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].zwrocTyp() == PUSTE &&
+                    if (GRA.plansza_do_gry[mysz.y / 100][mysz.x / 100].czyPuste() &&
                         GRA.czyCosJestZaznaczone()) {
 
-                        kierunek_pomocniczy = sprawdzKierunekRuchu(GRA.zwrocZaznaczoneY(), GRA.zwrocZaznaczoneX(),
-                                                                   mysz.y / 100, mysz.x / 100);
+                        kierunek_pomocniczy = sprawdzKierunekRuchu(GRA.zwrocZaznaczoneY(), GRA.zwrocZaznaczoneX(), mysz.y / 100, mysz.x / 100);
 
                         if (GRA.czyRuchJestDozwolonyGracz(mysz.x / 100, mysz.y / 100) &&
-                            GRA.czyJestKierunekNaLiscie(GRA.zwrocZaznaczoneX(), GRA.zwrocZaznaczoneY(),
-                                                        kierunek_pomocniczy)) {
+                            GRA.czyJestKierunekNaLiscie(GRA.zwrocZaznaczoneX(), GRA.zwrocZaznaczoneY(), kierunek_pomocniczy)) {
 
                             GRA.ruchPionkaZaznaczenie(mysz.x / 100, mysz.y / 100);
                             TURA = TURA_CZARNE;
                         }
-                        if (GRA.czyBicieJestDozwoloneGracz(mysz.x / 100, mysz.y / 100) &&
-                            GRA.czyJestKierunekNaLiscie(GRA.zwrocZaznaczoneX(), GRA.zwrocZaznaczoneY(),
-                                                        kierunek_pomocniczy)) {
+                        else if (GRA.czyBicieJestDozwoloneGracz(mysz.x / 100, mysz.y / 100) &&
+                            GRA.czyJestKierunekNaLiscie(GRA.zwrocZaznaczoneX(), GRA.zwrocZaznaczoneY(), kierunek_pomocniczy)) {
 
                             GRA.biciePionkaZaznaczenie(mysz.x / 100, mysz.y / 100);
                             TURA = TURA_CZARNE;
@@ -86,7 +87,7 @@ int main() {
 
             GRA.wypelnijMozliweKierunkiRuch();
 
-            if(TURA == TURA_CZARNE && GRA.ileCzarnychPionkow() != 0){
+            if(TURA == TURA_CZARNE && GRA.czyMaRuchyCzarny()){
                 std::cout << "TURA CZARNE" << std::endl;
 
                 GRA.losowyRuchCzarny();

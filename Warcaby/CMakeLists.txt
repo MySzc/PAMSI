@@ -6,7 +6,7 @@ set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -pedantic")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )
 
 
-add_executable(Warcaby main.cpp plansza.cpp plansza.h wielkosci.h usprawnienia.cpp usprawnienia.h akcesoriaDoGry.cpp akcesoriaDoGry.h gra.cpp gra.h)
+add_executable(Warcaby main.cpp plansza.cpp plansza.h wielkosci.h usprawnienia.cpp usprawnienia.h akcesoriaDoGry.cpp akcesoriaDoGry.h)
 
 set(SFML_DIR "SFML-2.5.1/lib/cmake/SFML")
 

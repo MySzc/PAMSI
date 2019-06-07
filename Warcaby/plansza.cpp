@@ -67,6 +67,9 @@ bool Pole::czyCzarny() {
     return (this->zwrocTyp() == CZARNY || this->zwrocTyp() == CZARNY_DAMA);
 }
 
+bool Pole::czyDama() {
+    return (this->zwrocTyp() == BIALY_DAMA || this->zwrocTyp() == CZARNY_DAMA);
+}
 
 void Pole::ustawKierunekGL() {
 
@@ -168,6 +171,10 @@ void Plansza::ruchPionkaKoordynaty(int start_x, int start_y, int end_x, int end_
 
     this->plansza_do_gry[start_x][start_y].ustawTyp(PUSTE);
 
+    if( (end_x == 0) && (this->plansza_do_gry[end_x][end_y].zwrocTyp() == BIALY) )
+        this->plansza_do_gry[end_x][end_y].ustawTyp( BIALY_DAMA );
+    else if( (end_x == 7) && (this->plansza_do_gry[end_x][end_y].zwrocTyp() == CZARNY) )
+        this->plansza_do_gry[end_x][end_y].ustawTyp( CZARNY_DAMA );
 }
 
 void Plansza::ruchPionkaZaznaczenie(int end_x, int end_y) {
@@ -196,6 +203,11 @@ void Plansza::biciePionkaKoordynaty(int start_x, int start_y, int end_x, int end
     bity_y = kierunekZbityPionka_Y(end_x, kier);
 
     this->plansza_do_gry[bity_y][bity_x].ustawTyp(PUSTE);
+
+    if( (end_x == 0) && (this->plansza_do_gry[end_x][end_y].zwrocTyp() == BIALY) )
+        this->plansza_do_gry[end_x][end_y].ustawTyp( BIALY_DAMA );
+    else if( (end_x == 7) && (this->plansza_do_gry[end_x][end_y].zwrocTyp() == CZARNY) )
+        this->plansza_do_gry[end_x][end_y].ustawTyp( CZARNY_DAMA );
 
 }
 
@@ -269,7 +281,7 @@ int Plansza::ileBialychPionkow() {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-            if(this->plansza_do_gry[x][y].zwrocTyp() == BIALY || this->plansza_do_gry[x][y].zwrocTyp() == BIALY_DAMA)
+            if(this->plansza_do_gry[x][y].czyBialy())
                 licznik++;
         }
     }
@@ -284,7 +296,7 @@ int Plansza::ileCzarnychPionkow() {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-            if(this->plansza_do_gry[x][y].zwrocTyp() == CZARNY || this->plansza_do_gry[x][y].zwrocTyp() == CZARNY_DAMA)
+            if(this->plansza_do_gry[x][y].czyCzarny())
                 licznik++;
         }
     }
@@ -306,19 +318,11 @@ bool Plansza::czyRuchJestDozwolonyGracz(int end_x, int end_y) {
         }
     }
 
-    //RUCH DAMKI
-    if(plansza_do_gry[start_y][start_x].zwrocTyp() == BIALY_DAMA){
 
-        return (abs(end_x - start_x)  == abs(end_y - start_y));
+    return ((abs(end_x - start_x) == 1) && (abs(end_y - start_y) == 1)) &&
+           (plansza_do_gry[start_y][start_x].czyBialy());
 
-    }//RUCH PIONKA
-    else if( ((abs(end_x - start_x) == 1) && (abs(end_y - start_y) == 1)) && (plansza_do_gry[start_y][start_x].zwrocTyp() == BIALY) ) {
 
-        return true;
-
-    };
-
-    return false;
 }
 
 bool Plansza::czyBicieJestDozwoloneGracz(int end_x, int end_y) {
@@ -337,14 +341,14 @@ bool Plansza::czyBicieJestDozwoloneGracz(int end_x, int end_y) {
         }
     }
 
-    if( ((abs(end_x - start_y) == 2) && (abs(end_y - start_x) == 2))  && (plansza_do_gry[start_x][start_y].zwrocTyp() == BIALY) ){
+    if( ((abs(end_x - start_y) == 2) && (abs(end_y - start_x) == 2))  && (this->plansza_do_gry[start_x][start_y].czyBialy()) ){
 
         kier = sprawdzKierunekRuchu(start_x,start_y,end_y,end_x);
 
         bity_x = kierunekZbityPionka_X(end_x, kier);
         bity_y = kierunekZbityPionka_Y(end_y, kier);
 
-        return (plansza_do_gry[bity_y][bity_x].zwrocTyp() == CZARNY || plansza_do_gry[bity_x][bity_y].zwrocTyp() == CZARNY_DAMA);
+        return (this->plansza_do_gry[bity_y][bity_x].czyCzarny());
     };
 
     return false;
@@ -374,7 +378,7 @@ void Plansza::wypelnijMozliweKierunkiRuch() {
 
                     else if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
 
-                        if(this->plansza_do_gry[y][x].czyBialy())
+                        if(this->plansza_do_gry[y][x].czyBialy() || this->plansza_do_gry[y][x].czyDama())
                             this->plansza_do_gry[y][x].ustawKierunekGL();
                         else
                             this->plansza_do_gry[y][x].ustawBrakRuchu(0);
@@ -408,7 +412,7 @@ void Plansza::wypelnijMozliweKierunkiRuch() {
 
                     else if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
 
-                        if(this->plansza_do_gry[y][x].czyBialy())
+                        if(this->plansza_do_gry[y][x].czyBialy() || this->plansza_do_gry[y][x].czyDama())
                             this->plansza_do_gry[y][x].ustawKierunekGP();
                         else
                             this->plansza_do_gry[y][x].ustawBrakRuchu(1);
@@ -442,7 +446,7 @@ void Plansza::wypelnijMozliweKierunkiRuch() {
 
                     else if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
 
-                        if(this->plansza_do_gry[y][x].czyCzarny())
+                        if(this->plansza_do_gry[y][x].czyCzarny() || this->plansza_do_gry[y][x].czyDama())
                             this->plansza_do_gry[y][x].ustawKierunekDP();
                         else
                             this->plansza_do_gry[y][x].ustawBrakRuchu(2);
@@ -477,7 +481,7 @@ void Plansza::wypelnijMozliweKierunkiRuch() {
 
                     else if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
 
-                        if(this->plansza_do_gry[y][x].czyCzarny())
+                        if(this->plansza_do_gry[y][x].czyCzarny() || this->plansza_do_gry[y][x].czyDama())
                             this->plansza_do_gry[y][x].ustawKierunekDL();
                         else
                             this->plansza_do_gry[y][x].ustawBrakRuchu(3);
@@ -529,7 +533,7 @@ void Plansza::losowyRuchCzarny() {
 
         if(this->plansza_do_gry[y][x].czyCzarny()){
 
-            for (int i = 0; i < ILOSC_RUCHOW; ++i) {
+            for (int i = 0; (i < ILOSC_RUCHOW && !ruch); ++i) {
 
                 if(this->plansza_do_gry[y][x].kierunki[i] == GORA_LEWO){
 
@@ -551,7 +555,6 @@ void Plansza::losowyRuchCzarny() {
                     tmp_x = x + 1;
 
                     if(this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE){
-
                         this->ruchPionkaKoordynaty(y,x,tmp_y,tmp_x);
                         ruch = true;
                     }
@@ -592,6 +595,44 @@ void Plansza::losowyRuchCzarny() {
         }
     }
 
+}
+
+bool Plansza::czyMaRuchyCzarny() {
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->plansza_do_gry[y][x].czyCzarny()){
+
+                for (int i = 0; i < ILOSC_RUCHOW; ++i) {
+
+                    if(this->plansza_do_gry[y][x].kierunki[i] != BRAK_RUCHU)
+                        return true;
+                }
+            }
+        }
+    }
+
+    return false;
+}
+
+bool Plansza::czyMaRuchyBialy() {
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            if(this->plansza_do_gry[y][x].czyBialy()){
+
+                for (int i = 0; i < ILOSC_RUCHOW; ++i) {
+
+                    if(this->plansza_do_gry[y][x].kierunki[i] != BRAK_RUCHU)
+                        return true;
+                }
+            }
+        }
+    }
+
+    return false;
 }
 
 

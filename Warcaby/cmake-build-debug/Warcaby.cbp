@@ -92,12 +92,6 @@
 		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/akcesoriaDoGry.h">
 			<Option target="Warcaby"/>
 		</Unit>
-		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/gra.cpp">
-			<Option target="Warcaby"/>
-		</Unit>
-		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/gra.h">
-			<Option target="Warcaby"/>
-		</Unit>
 		<Unit filename="/home/msz/Desktop/PAMSI/Warcaby/main.cpp">
 			<Option target="Warcaby"/>
 		</Unit>
