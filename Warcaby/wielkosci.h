@@ -9,4 +9,8 @@
 #define WIELKOSC_POLA 100
 #define ILOSC_RUCHOW 4
 
+#define PUNKTY_BICIE 5
+#define PUNKTY_RUCH 2
+#define PUNKTY_PROMOCJA 3
+
 #endif //WARCABY_WIELKOSCI_H

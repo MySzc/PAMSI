@@ -87,16 +87,11 @@ int main() {
 
             if(TURA == TURA_CZARNE && GRA.czyMaRuchyCzarny()){
 
-                GRA.losowyRuchCzarny();
+                GRA.ruchPoIndeksie(pierwszyPoziomAI(GRA));
 
                 TURA = TURA_BIALE;
             } else if(TURA == TURA_CZARNE)
                 koniec_gry = true;
-
-
-
-
-
 
 
         }

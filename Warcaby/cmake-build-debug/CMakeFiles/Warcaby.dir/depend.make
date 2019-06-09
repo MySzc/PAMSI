@@ -165,8 +165,6 @@ CMakeFiles/Warcaby.dir/plansza.cpp.o: ../plansza.h
 CMakeFiles/Warcaby.dir/plansza.cpp.o: ../usprawnienia.h
 CMakeFiles/Warcaby.dir/plansza.cpp.o: ../wielkosci.h
 
-CMakeFiles/Warcaby.dir/usprawnienia.cpp.o: ../plansza.h
 CMakeFiles/Warcaby.dir/usprawnienia.cpp.o: ../usprawnienia.cpp
 CMakeFiles/Warcaby.dir/usprawnienia.cpp.o: ../usprawnienia.h
-CMakeFiles/Warcaby.dir/usprawnienia.cpp.o: ../wielkosci.h
 

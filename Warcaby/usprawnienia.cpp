@@ -3,7 +3,7 @@
 //
 
 #include "usprawnienia.h"
-#include "plansza.h"
+
 
 bool czyTenSamKolor(typPionka typ1, typPionka typ2) {
 

@@ -41,6 +41,16 @@ enum turaGry{
     BRAK,
 };
 
+struct liczniki{
+public:
 
+    int licznik_pola;
+    int licznik_kierunku;
+
+    liczniki(){
+        licznik_pola=0;
+        licznik_kierunku=0;
+    };
+};
 
 #endif //WARCABY_USPRAWNIENIA_H

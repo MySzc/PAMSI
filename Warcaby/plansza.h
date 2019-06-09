@@ -82,8 +82,12 @@ public:
     bool czyMaRuchyBialy();
 
     void losowyRuchCzarny();
+    void ruchPoIndeksie(liczniki licz);
 
 };
+
+liczniki pierwszyPoziomAI(Plansza Kopia_planszy);
+int drugiPoziomAI(Plansza Kopia_planszy);
 
 
 

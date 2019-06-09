@@ -8,6 +8,8 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <queue>
+
 
 
 Pole::Pole() {
@@ -633,6 +635,450 @@ bool Plansza::czyMaRuchyBialy() {
     }
 
     return false;
+}
+
+void Plansza::ruchPoIndeksie(liczniki licz) {
+
+    int licznik = 0;
+    int tmp_y, tmp_x;
+
+    for (int y = 0; y < WIELKOSC_PLANSZY && licznik != licz.licznik_pola; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY && licznik != licz.licznik_pola; ++x) {
+            licznik++;
+
+
+                    if (licznik == licz.licznik_pola) {
+
+                        if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == GORA_LEWO) {
+
+                            tmp_y = y - 1;
+                            tmp_x = x - 1;
+
+                            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
+                                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+                            else if (this->plansza_do_gry[tmp_y - 1][tmp_x - 1].zwrocTyp() == PUSTE)
+                                this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x - 1);
+
+
+                        } else if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == GORA_PRAWO) {
+
+                            tmp_y = y - 1;
+                            tmp_x = x + 1;
+
+                            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
+                                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+                            else if (this->plansza_do_gry[tmp_y - 1][tmp_x + 1].zwrocTyp() == PUSTE)
+                                this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x + 1);
+
+
+                        } else if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == DOL_PRAWO) {
+
+                            tmp_y = y + 1;
+                            tmp_x = x + 1;
+
+                            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
+                                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+                            else if (this->plansza_do_gry[tmp_y + 1][tmp_x + 1].zwrocTyp() == PUSTE)
+                                this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x + 1);
+
+
+                        } else if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == DOL_LEWO) {
+
+                            tmp_y = y + 1;
+                            tmp_x = x - 1;
+
+                            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
+                                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+                            else if (this->plansza_do_gry[tmp_y + 1][tmp_x - 1].zwrocTyp() == PUSTE)
+                                this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x - 1);
+                        }
+                    }
+
+
+        }
+    }
+}
+
+liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
+
+    liczniki licz;
+
+    int pkt = 0;
+    int pkt_top = -99;
+
+    int indeks = 0;
+    int indeks_kierunku = 0;
+
+
+    int tmp_y, tmp_x;
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+            indeks++;
+
+            if (Kopia_planszy.plansza_do_gry[y][x].czyCzarny()) {
+
+                for (int i = 0; (i < ILOSC_RUCHOW); ++i) {
+
+                    indeks_kierunku = i;
+
+                    if (Kopia_planszy.plansza_do_gry[y][x].kierunki[i] == GORA_LEWO) {
+
+                        tmp_y = y - 1;
+                        tmp_x = x - 1;
+
+                        if (Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                            if(tmp_y > 3)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            Kopia_planszy.ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+
+                            pkt = pkt + drugiPoziomAI(Kopia_planszy);
+
+                            if(pkt >= pkt_top) {
+                                pkt_top = pkt;
+                                licz.licznik_pola = indeks;
+                                licz.licznik_kierunku =  indeks_kierunku;
+                            }
+
+                            pkt = 0;
+
+                        } else if (Kopia_planszy.plansza_do_gry[tmp_y - 1][tmp_x - 1].zwrocTyp() == PUSTE) {
+
+                            pkt = pkt + PUNKTY_BICIE;
+
+                            if(tmp_y > 3)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y-1 == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            Kopia_planszy.biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x - 1);
+
+                            pkt = pkt + drugiPoziomAI(Kopia_planszy);
+
+                            if(pkt >= pkt_top) {
+                                pkt_top = pkt;
+                                licz.licznik_pola = indeks;
+                                licz.licznik_kierunku =  indeks_kierunku;
+                            }
+
+                            pkt = 0;
+
+                        }
+
+                    } else if (Kopia_planszy.plansza_do_gry[y][x].kierunki[i] == GORA_PRAWO) {
+
+                        tmp_y = y - 1;
+                        tmp_x = x + 1;
+
+                        if (Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                            if(tmp_y > 3)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            Kopia_planszy.ruchPionkaKoordynaty(y,x,tmp_y,tmp_x);
+
+                            pkt = pkt + drugiPoziomAI(Kopia_planszy);
+
+                            if(pkt >= pkt_top) {
+                                pkt_top = pkt;
+                                licz.licznik_pola = indeks;
+                                licz.licznik_kierunku =  indeks_kierunku;
+                            }
+
+                            pkt = 0;
+
+                        } else if (Kopia_planszy.plansza_do_gry[tmp_y - 1][tmp_x + 1].zwrocTyp() == PUSTE) {
+
+                            pkt = pkt + PUNKTY_BICIE;
+
+                            if(tmp_y > 3)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y-1 == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            Kopia_planszy.biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x + 1);
+
+                            pkt = pkt + drugiPoziomAI(Kopia_planszy);
+
+                            if(pkt >= pkt_top) {
+                                pkt_top = pkt;
+                                licz.licznik_pola = indeks;
+                                licz.licznik_kierunku =  indeks_kierunku;
+                            }
+
+                            pkt = 0;
+
+
+                        }
+
+                    } else if (Kopia_planszy.plansza_do_gry[y][x].kierunki[i] == DOL_PRAWO) {
+
+                        tmp_y = y + 1;
+                        tmp_x = x + 1;
+
+                        if (Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                            if(tmp_y > 3)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama() && tmp_y == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            Kopia_planszy.ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+
+                            pkt = pkt + drugiPoziomAI(Kopia_planszy);
+
+                            if(pkt >= pkt_top) {
+                                pkt_top = pkt;
+                                licz.licznik_pola = indeks;
+                                licz.licznik_kierunku =  indeks_kierunku;
+                            }
+
+                            pkt = 0;
+
+                        } else if (Kopia_planszy.plansza_do_gry[tmp_y + 1][tmp_x + 1].zwrocTyp() == PUSTE) {
+
+                            pkt = pkt + PUNKTY_BICIE;
+
+                            if(tmp_y > 3)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y+1 == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            Kopia_planszy.biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x + 1);
+
+                            pkt = pkt + drugiPoziomAI(Kopia_planszy);
+
+                            if(pkt >= pkt_top) {
+                                pkt_top = pkt;
+                                licz.licznik_pola = indeks;
+                                licz.licznik_kierunku =  indeks_kierunku;
+                            }
+
+                            pkt = 0;
+
+
+                        }
+
+                    } else if (Kopia_planszy.plansza_do_gry[y][x].kierunki[i] == DOL_LEWO) {
+
+                        tmp_y = y + 1;
+                        tmp_x = x - 1;
+
+                        if (Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                            if(tmp_y > 3)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            Kopia_planszy.ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+
+                            pkt = pkt + drugiPoziomAI(Kopia_planszy);
+
+                            if(pkt >= pkt_top) {
+                                pkt_top = pkt;
+                                licz.licznik_pola = indeks;
+                                licz.licznik_kierunku =  indeks_kierunku;
+                            }
+
+                            pkt = 0;
+
+                        } else if (Kopia_planszy.plansza_do_gry[tmp_y + 1][tmp_x - 1].zwrocTyp() == PUSTE) {
+
+                            pkt = pkt + PUNKTY_BICIE;
+
+                            if(tmp_y > 3)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama() && tmp_y+1 == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            Kopia_planszy.biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x - 1);
+
+                            pkt = pkt + drugiPoziomAI(Kopia_planszy);
+
+                            if(pkt >= pkt_top) {
+                                pkt_top = pkt;
+                                licz.licznik_pola = indeks;
+                                licz.licznik_kierunku =  indeks_kierunku;
+                            }
+
+                            pkt = 0;
+
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return licz;
+}
+
+int drugiPoziomAI(Plansza Kopia_planszy) {
+
+    std::priority_queue<int> PUNKTY;
+
+    int pkt = 0;
+
+    int tmp_y, tmp_x;
+
+    for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
+        for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
+
+
+            if (Kopia_planszy.plansza_do_gry[y][x].czyBialy()) {
+
+                for (int i = 0; (i < ILOSC_RUCHOW); ++i) {
+
+                    if (Kopia_planszy.plansza_do_gry[y][x].kierunki[i] == GORA_LEWO) {
+
+                        tmp_y = y - 1;
+                        tmp_x = x - 1;
+
+                        if (Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                            if(tmp_y < 4)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            PUNKTY.push(pkt);
+                            pkt = 0;
+
+                        } else if (Kopia_planszy.plansza_do_gry[tmp_y - 1][tmp_x - 1].zwrocTyp() == PUSTE) {
+
+                            pkt = pkt + PUNKTY_BICIE;
+
+                            if(tmp_y < 4)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y-1 == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            PUNKTY.push(pkt);
+                            pkt = 0;
+
+                        }
+
+                    } else if (Kopia_planszy.plansza_do_gry[y][x].kierunki[i] == GORA_PRAWO) {
+
+                        tmp_y = y - 1;
+                        tmp_x = x + 1;
+
+                        if (Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                            if(tmp_y < 4)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            PUNKTY.push(pkt);
+                            pkt = 0;
+
+                        } else if (Kopia_planszy.plansza_do_gry[tmp_y - 1][tmp_x + 1].zwrocTyp() == PUSTE) {
+
+                            pkt = pkt + PUNKTY_BICIE;
+
+                            if(tmp_y < 4)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y-1 == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            PUNKTY.push(pkt);
+                            pkt = 0;
+
+
+                        }
+
+                    } else if (Kopia_planszy.plansza_do_gry[y][x].kierunki[i] == DOL_PRAWO) {
+
+                        tmp_y = y + 1;
+                        tmp_x = x + 1;
+
+                        if (Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                            if(tmp_y < 4)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama() && tmp_y == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            PUNKTY.push(pkt);
+                            pkt = 0;
+
+                        } else if (Kopia_planszy.plansza_do_gry[tmp_y + 1][tmp_x + 1].zwrocTyp() == PUSTE) {
+
+                            pkt = pkt + PUNKTY_BICIE;
+
+                            if(tmp_y < 4)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y+1 == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            PUNKTY.push(pkt);
+                            pkt = 0;
+
+
+                        }
+
+                    } else if (Kopia_planszy.plansza_do_gry[y][x].kierunki[i] == DOL_LEWO) {
+
+                        tmp_y = y + 1;
+                        tmp_x = x - 1;
+
+                        if (Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE) {
+
+                            if(tmp_y < 4)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            PUNKTY.push(pkt);
+                            pkt = 0;
+
+                        } else if (Kopia_planszy.plansza_do_gry[tmp_y + 1][tmp_x - 1].zwrocTyp() == PUSTE) {
+
+                            pkt = pkt + PUNKTY_BICIE;
+
+                            if(tmp_y < 4)
+                                pkt = pkt + PUNKTY_RUCH;
+
+                            if(!Kopia_planszy.plansza_do_gry[y][x].czyDama() && tmp_y+1 == 0)
+                                pkt = pkt + PUNKTY_PROMOCJA;
+
+                            PUNKTY.push(pkt);
+                            pkt = 0;
+
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return -PUNKTY.top();
 }
 
 
