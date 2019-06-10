@@ -44,11 +44,13 @@ enum turaGry{
 struct liczniki{
 public:
 
-    int licznik_pola;
+    int pole_x;
+    int pole_y;
     int licznik_kierunku;
 
     liczniki(){
-        licznik_pola=0;
+        pole_x=0;
+        pole_y=0;
         licznik_kierunku=0;
     };
 };

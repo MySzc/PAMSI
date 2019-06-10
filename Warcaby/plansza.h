@@ -82,7 +82,7 @@ public:
     bool czyMaRuchyBialy();
 
     void losowyRuchCzarny();
-    void ruchPoIndeksie(liczniki licz);
+    void ruchPoLiczniku(liczniki licz);
 
 };
 

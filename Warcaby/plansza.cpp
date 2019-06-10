@@ -637,67 +637,63 @@ bool Plansza::czyMaRuchyBialy() {
     return false;
 }
 
-void Plansza::ruchPoIndeksie(liczniki licz) {
+void Plansza::ruchPoLiczniku(liczniki licz) {
 
-    int licznik = 0;
     int tmp_y, tmp_x;
 
-    for (int y = 0; y < WIELKOSC_PLANSZY && licznik != licz.licznik_pola; ++y) {
-        for (int x = 0; x < WIELKOSC_PLANSZY && licznik != licz.licznik_pola; ++x) {
-            licznik++;
+    int x = licz.pole_x;
+    int y = licz.pole_y;
 
 
-                    if (licznik == licz.licznik_pola) {
+        if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == GORA_LEWO) {
 
-                        if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == GORA_LEWO) {
+            tmp_y = y - 1;
+            tmp_x = x - 1;
 
-                            tmp_y = y - 1;
-                            tmp_x = x - 1;
-
-                            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
-                                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
-                            else if (this->plansza_do_gry[tmp_y - 1][tmp_x - 1].zwrocTyp() == PUSTE)
-                                this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x - 1);
+            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
+                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+            else if (this->plansza_do_gry[tmp_y - 1][tmp_x - 1].zwrocTyp() == PUSTE)
+                this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x - 1);
 
 
-                        } else if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == GORA_PRAWO) {
+        } else if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == GORA_PRAWO) {
 
-                            tmp_y = y - 1;
-                            tmp_x = x + 1;
+            tmp_y = y - 1;
+            tmp_x = x + 1;
 
-                            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
-                                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
-                            else if (this->plansza_do_gry[tmp_y - 1][tmp_x + 1].zwrocTyp() == PUSTE)
-                                this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x + 1);
-
-
-                        } else if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == DOL_PRAWO) {
-
-                            tmp_y = y + 1;
-                            tmp_x = x + 1;
-
-                            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
-                                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
-                            else if (this->plansza_do_gry[tmp_y + 1][tmp_x + 1].zwrocTyp() == PUSTE)
-                                this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x + 1);
+            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
+                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+            else if (this->plansza_do_gry[tmp_y - 1][tmp_x + 1].zwrocTyp() == PUSTE)
+                this->biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x + 1);
 
 
-                        } else if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == DOL_LEWO) {
+        } else if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == DOL_PRAWO) {
 
-                            tmp_y = y + 1;
-                            tmp_x = x - 1;
+            tmp_y = y + 1;
+            tmp_x = x + 1;
 
-                            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
-                                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
-                            else if (this->plansza_do_gry[tmp_y + 1][tmp_x - 1].zwrocTyp() == PUSTE)
-                                this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x - 1);
-                        }
-                    }
+            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
+                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+            else if (this->plansza_do_gry[tmp_y + 1][tmp_x + 1].zwrocTyp() == PUSTE)
+                this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x + 1);
 
 
+        } else if (this->plansza_do_gry[y][x].kierunki[licz.licznik_kierunku] == DOL_LEWO) {
+
+            tmp_y = y + 1;
+            tmp_x = x - 1;
+
+            if (this->plansza_do_gry[tmp_y][tmp_x].zwrocTyp() == PUSTE)
+                this->ruchPionkaKoordynaty(y, x, tmp_y, tmp_x);
+            else if (this->plansza_do_gry[tmp_y + 1][tmp_x - 1].zwrocTyp() == PUSTE)
+                this->biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x - 1);
         }
-    }
 }
+
+
+
+
+
 
 liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
 
@@ -706,8 +702,6 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
     int pkt = 0;
     int pkt_top = -99;
 
-    int indeks = 0;
-    int indeks_kierunku = 0;
 
 
     int tmp_y, tmp_x;
@@ -715,13 +709,11 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
     for (int y = 0; y < WIELKOSC_PLANSZY; ++y) {
         for (int x = 0; x < WIELKOSC_PLANSZY; ++x) {
 
-            indeks++;
 
             if (Kopia_planszy.plansza_do_gry[y][x].czyCzarny()) {
 
                 for (int i = 0; (i < ILOSC_RUCHOW); ++i) {
 
-                    indeks_kierunku = i;
 
                     if (Kopia_planszy.plansza_do_gry[y][x].kierunki[i] == GORA_LEWO) {
 
@@ -740,10 +732,13 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
 
                             pkt = pkt + drugiPoziomAI(Kopia_planszy);
 
+                            Kopia_planszy.ruchPionkaKoordynaty(tmp_y, tmp_x, y, x);
+
                             if(pkt >= pkt_top) {
                                 pkt_top = pkt;
-                                licz.licznik_pola = indeks;
-                                licz.licznik_kierunku =  indeks_kierunku;
+                                licz.pole_x = x;
+                                licz.pole_y = y;
+                                licz.licznik_kierunku =  i;
                             }
 
                             pkt = 0;
@@ -758,14 +753,21 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
                             if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y-1 == 0)
                                 pkt = pkt + PUNKTY_PROMOCJA;
 
+                            typPionka tmp_typ;
+                            tmp_typ = Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp();
+
                             Kopia_planszy.biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x - 1);
 
                             pkt = pkt + drugiPoziomAI(Kopia_planszy);
 
+                            Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].ustawTyp(tmp_typ);
+                            Kopia_planszy.ruchPionkaKoordynaty(tmp_y - 1, tmp_x - 1, y, x);
+
                             if(pkt >= pkt_top) {
                                 pkt_top = pkt;
-                                licz.licznik_pola = indeks;
-                                licz.licznik_kierunku =  indeks_kierunku;
+                                licz.pole_x = x;
+                                licz.pole_y = y;
+                                licz.licznik_kierunku =  i;
                             }
 
                             pkt = 0;
@@ -789,10 +791,13 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
 
                             pkt = pkt + drugiPoziomAI(Kopia_planszy);
 
+                            Kopia_planszy.ruchPionkaKoordynaty(tmp_y, tmp_x, y, x);
+
                             if(pkt >= pkt_top) {
                                 pkt_top = pkt;
-                                licz.licznik_pola = indeks;
-                                licz.licznik_kierunku =  indeks_kierunku;
+                                licz.pole_x = x;
+                                licz.pole_y = y;
+                                licz.licznik_kierunku =  i;
                             }
 
                             pkt = 0;
@@ -807,14 +812,21 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
                             if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y-1 == 0)
                                 pkt = pkt + PUNKTY_PROMOCJA;
 
+                            typPionka tmp_typ;
+                            tmp_typ = Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp();
+
                             Kopia_planszy.biciePionkaKoordynaty(y, x, tmp_y - 1, tmp_x + 1);
 
                             pkt = pkt + drugiPoziomAI(Kopia_planszy);
 
+                            Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].ustawTyp(tmp_typ);
+                            Kopia_planszy.ruchPionkaKoordynaty(tmp_y - 1, tmp_x + 1, y, x);
+
                             if(pkt >= pkt_top) {
                                 pkt_top = pkt;
-                                licz.licznik_pola = indeks;
-                                licz.licznik_kierunku =  indeks_kierunku;
+                                licz.pole_x = x;
+                                licz.pole_y = y;
+                                licz.licznik_kierunku =  i;
                             }
 
                             pkt = 0;
@@ -839,10 +851,13 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
 
                             pkt = pkt + drugiPoziomAI(Kopia_planszy);
 
+                            Kopia_planszy.ruchPionkaKoordynaty(tmp_y, tmp_x, y, x);
+
                             if(pkt >= pkt_top) {
                                 pkt_top = pkt;
-                                licz.licznik_pola = indeks;
-                                licz.licznik_kierunku =  indeks_kierunku;
+                                licz.pole_x = x;
+                                licz.pole_y = y;
+                                licz.licznik_kierunku =  i;
                             }
 
                             pkt = 0;
@@ -857,14 +872,21 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
                             if(!Kopia_planszy.plansza_do_gry[y][x].czyDama()  && tmp_y+1 == 0)
                                 pkt = pkt + PUNKTY_PROMOCJA;
 
+                            typPionka tmp_typ;
+                            tmp_typ = Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp();
+
                             Kopia_planszy.biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x + 1);
 
                             pkt = pkt + drugiPoziomAI(Kopia_planszy);
 
+                            Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].ustawTyp(tmp_typ);
+                            Kopia_planszy.ruchPionkaKoordynaty(tmp_y + 1, tmp_x + 1, y, x);
+
                             if(pkt >= pkt_top) {
                                 pkt_top = pkt;
-                                licz.licznik_pola = indeks;
-                                licz.licznik_kierunku =  indeks_kierunku;
+                                licz.pole_x = x;
+                                licz.pole_y = y;
+                                licz.licznik_kierunku =  i;
                             }
 
                             pkt = 0;
@@ -889,10 +911,13 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
 
                             pkt = pkt + drugiPoziomAI(Kopia_planszy);
 
+                            Kopia_planszy.ruchPionkaKoordynaty(tmp_y, tmp_x, y, x);
+
                             if(pkt >= pkt_top) {
                                 pkt_top = pkt;
-                                licz.licznik_pola = indeks;
-                                licz.licznik_kierunku =  indeks_kierunku;
+                                licz.pole_x = x;
+                                licz.pole_y = y;
+                                licz.licznik_kierunku =  i;
                             }
 
                             pkt = 0;
@@ -907,14 +932,21 @@ liczniki pierwszyPoziomAI(Plansza Kopia_planszy) {
                             if(!Kopia_planszy.plansza_do_gry[y][x].czyDama() && tmp_y+1 == 0)
                                 pkt = pkt + PUNKTY_PROMOCJA;
 
+                            typPionka tmp_typ;
+                            tmp_typ = Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].zwrocTyp();
+
                             Kopia_planszy.biciePionkaKoordynaty(y, x, tmp_y + 1, tmp_x - 1);
 
                             pkt = pkt + drugiPoziomAI(Kopia_planszy);
 
+                            Kopia_planszy.plansza_do_gry[tmp_y][tmp_x].ustawTyp(tmp_typ);
+                            Kopia_planszy.ruchPionkaKoordynaty(tmp_y + 1, tmp_x - 1, y, x);
+
                             if(pkt >= pkt_top) {
                                 pkt_top = pkt;
-                                licz.licznik_pola = indeks;
-                                licz.licznik_kierunku =  indeks_kierunku;
+                                licz.pole_x = x;
+                                licz.pole_y = y;
+                                licz.licznik_kierunku =  i;
                             }
 
                             pkt = 0;
@@ -1078,7 +1110,10 @@ int drugiPoziomAI(Plansza Kopia_planszy) {
         }
     }
 
-    return -PUNKTY.top();
+    if(!PUNKTY.empty())
+        return -PUNKTY.top();
+    else
+        return 0;
 }
 
 

@@ -87,7 +87,13 @@ int main() {
 
             if(TURA == TURA_CZARNE && GRA.czyMaRuchyCzarny()){
 
-                GRA.ruchPoIndeksie(pierwszyPoziomAI(GRA));
+                liczniki tmp_l = pierwszyPoziomAI(GRA);
+
+                int tmp_x,tmp_y,tmp_k;
+
+                GRA.ruchPoLiczniku(tmp_l);
+
+                //GRA.losowyRuchCzarny();
 
                 TURA = TURA_BIALE;
             } else if(TURA == TURA_CZARNE)
@@ -115,10 +121,6 @@ int main() {
                 else if(GRA.plansza_do_gry[x][y].zwrocTyp() == BIALY_DAMA)
                     window.draw(tekstury.spriteDamyBialy);
 
-                //if(x == 7 && y == 7) {
-                //    std::cout << "********************************************" << std::endl;
-                //    GRA.wyswietlPlanszeTerminal();
-                //}
             }
         }
 
