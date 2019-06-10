@@ -89,8 +89,6 @@ int main() {
 
                 liczniki tmp_l = pierwszyPoziomAI(GRA);
 
-                int tmp_x,tmp_y,tmp_k;
-
                 GRA.ruchPoLiczniku(tmp_l);
 
                 //GRA.losowyRuchCzarny();
